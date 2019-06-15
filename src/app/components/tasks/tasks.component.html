@@ -1,0 +1,73 @@
+
+
+<div class="container  "style="margin-left:680px;width:200px" >
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Add Date To Cell :: {{updateFieldID}}   {{updateFieldnum}}</label>
+      <input (change)="tableChanged()" type="date" name="calender" [(ngModel)]="temporaryDate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <!--<input name="asd" type="text" [(ngModel)]="testString">
+    <tr *ngFor="let policy of policies">
+    -->
+
+  </form>
+</div>
+<div class="container  "style="margin-left:730px;width:200px;   padding-bottom: 50px;">
+  
+  </div>
+  <div  *ngIf="this.shiftFormFrag" class="container  col-lg-offset-4">
+    <app-shift-form [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user"></app-shift-form>
+  </div>
+  <div *ngIf="spinnerTable" class="container  col-lg-offset-5"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div>
+  
+
+
+  
+  
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">16</th>
+      <th scope="col">15</th>
+      <th scope="col">14</th>
+      <th scope="col">13</th>
+      <th scope="col">12</th>
+      <th scope="col">11</th>
+      <th scope="col">10</th>
+      <th scope="col">9</th>
+      <th scope="col">8</th>
+      <th scope="col">7</th>
+      <th scope="col">6</th>
+      <th scope="col">5</th>
+      <th scope="col">4</th>
+      <th scope="col">3</th>
+      <th scope="col">2</th>
+      <th scope="col">1</th>
+      <th scope="col">ضابط</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor ="let data of  shifts">
+
+      <td><button  [ngClass]="{'btn-danger' : data[15].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[15].User_.ID}} name="16"   (click)="showShiftForm($event)" type="button" >{{data[15].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[14].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[14].User_.ID}} name="15"   (click)="showShiftForm($event)" type="button" >{{data[14].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[13].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[13].User_.ID}} name="14"   (click)="showShiftForm($event)" type="button" >{{data[13].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[12].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[12].User_.ID}} name="13"   (click)="showShiftForm($event)" type="button" >{{data[12].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[11].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[11].User_.ID}} name="12"   (click)="showShiftForm($event)" type="button" >{{data[11].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[10].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[10].User_.ID}} name="11"   (click)="showShiftForm($event)" type="button" >{{data[10].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[9].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[9].User_.ID}}  name="10"   (click)="showShiftForm($event)" type="button" >{{data[9].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[8].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[8].User_.ID}}  name="9"    (click)="showShiftForm($event)" type="button" >{{data[8].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[7].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[7].User_.ID}}  name="8"    (click)="showShiftForm($event)" type="button" >{{data[7].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[6].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[6].User_.ID}}  name="7"    (click)="showShiftForm($event)" type="button" >{{data[6].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[5].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[5].User_.ID}}  name="6"    (click)="showShiftForm($event)" type="button" >{{data[5].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[4].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[4].User_.ID}}  name="5"    (click)="showShiftForm($event)" type="button" >{{data[4].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[3].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[3].User_.ID}}  name="4"    (click)="showShiftForm($event)" type="button" >{{data[3].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[2].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[2].User_.ID}}  name="3"    (click)="showShiftForm($event)" type="button" >{{data[2].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[1].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[1].User_.ID}}  name="2"    (click)="showShiftForm($event)" type="button" >{{data[1].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[0].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[0].User_.ID}}  name="1"    (click)="showShiftForm($event)" type="button" >{{data[0].Date}} </button></td>
+      <th scope="row">{{data[0].User_.username}}</th>
+  </tbody>
+</table>
+
+<!--[ngClass]="{' btn-danger' : data[].Date==0001-01-01T00:00:00}"-->

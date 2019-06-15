@@ -1,0 +1,25 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+    <div class="col-md-4">
+		<div class="form_main">
+                <h4 class="heading"><strong>أضــــافة </strong> نبــــــــطشية <span></span></h4>
+                <div class="form">
+                <form action="contact_send_mail.php" method="post" id="contactFrm" name="contactFrm">
+                    <input  style="text-align:right;" type="date" required=""  name="name" class="txt">
+                    <input [(ngModel)]="user.username" style="text-align:center;" type="text" required="" placeholder="اسم الظابط  " value="" name="username" class="txt">
+                    <input [(ngModel)]="cell_Number" style="text-align:center;" type="text" required="" placeholder="رقم النبطشية   " value="" name="cell_Number" class="txt">
+                    <select *ngFor="let data of Dutys">
+                      <option value="volvo">{{data.DutyType_Name}}</option>
+                    </select>           
+                       
+                </form>
+            </div>
+            </div>
+          </div>
+	</div>
+</div>
