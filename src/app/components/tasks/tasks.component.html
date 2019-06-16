@@ -1,22 +1,30 @@
 
 
-<div class="container  "style="margin-left:680px;width:200px" >
+<div class="container  "style="margin-left:580px;width:600px" >
   <form>
     <div class="form-group">
-      <label for="exampleInputEmail1">Add Date To Cell :: {{updateFieldID}}   {{updateFieldnum}}</label>
-      <input (change)="tableChanged()" type="date" name="calender" [(ngModel)]="temporaryDate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <input  style="width: 200px ;float: left;" type="input" name="month" [(ngModel)]="month" class="form-control" id="Month" aria-describedby="emailHelp" placeholder="Enter email">
+      <input style="width: 200px ;float: left;" type="input" name="year" [(ngModel)]="year" class="form-control" id="Year" aria-describedby="emailHelp" placeholder="Enter email">
     </div>
     <!--<input name="asd" type="text" [(ngModel)]="testString">
     <tr *ngFor="let policy of policies">
     -->
 
   </form>
+
+</div>
+<div class="container  "style="margin-left:740px;width:800px;padding-top:10px">
+  <button (click)="tableChanged()" type="button" class="btn btn-primary"><b>إستعــــــــلام</b></button>
 </div>
 <div class="container  "style="margin-left:730px;width:200px;   padding-bottom: 50px;">
   
   </div>
   <div  *ngIf="this.shiftFormFrag" class="container  col-lg-offset-4">
-    <app-shift-form [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user"></app-shift-form>
+    <app-shift-form (updateShiftParent)="updateShiftList()" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user"></app-shift-form>
+
+  </div>
+  <div  *ngIf="this.shiftDetails" class="container  col-lg-offset-4">
+    <app-shift-details [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user" [dutyTypeName]="dutyTypeTemp"></app-shift-details>
   </div>
   <div *ngIf="spinnerTable" class="container  col-lg-offset-5"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div>
   
@@ -66,7 +74,7 @@
       <td><button  [ngClass]="{'btn-danger' : data[2].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[2].User_.ID}}  name="3"    (click)="showShiftForm($event)" type="button" >{{data[2].Date}} </button></td>
       <td><button  [ngClass]="{'btn-danger' : data[1].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[1].User_.ID}}  name="2"    (click)="showShiftForm($event)" type="button" >{{data[1].Date}} </button></td>
       <td><button  [ngClass]="{'btn-danger' : data[0].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[0].User_.ID}}  name="1"    (click)="showShiftForm($event)" type="button" >{{data[0].Date}} </button></td>
-      <th scope="row">{{data[0].User_.username}}</th>
+      <th scope="row">{{data[0].User_.MyRank.Rank_Name}} {{data[0].User_.MySpecialization.Specialization_Name}} / {{data[0].User_.username}} </th>
   </tbody>
 </table>
 

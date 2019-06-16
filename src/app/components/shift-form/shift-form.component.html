@@ -9,15 +9,20 @@
 		<div class="form_main">
                 <h4 class="heading"><strong>أضــــافة </strong> نبــــــــطشية <span></span></h4>
                 <div class="form">
-                <form action="contact_send_mail.php" method="post" id="contactFrm" name="contactFrm">
-                    <input  style="text-align:right;" type="date" required=""  name="name" class="txt">
-                    <input [(ngModel)]="user.username" style="text-align:center;" type="text" required="" placeholder="اسم الظابط  " value="" name="username" class="txt">
-                    <input [(ngModel)]="cell_Number" style="text-align:center;" type="text" required="" placeholder="رقم النبطشية   " value="" name="cell_Number" class="txt">
-                    <select *ngFor="let data of Dutys">
-                      <option value="volvo">{{data.DutyType_Name}}</option>
+                <form  id="contactFrm" name="contactFrm">
+                    <input [(ngModel)]="date" style="text-align:right;" type="date" required=""  name="name" class="txt">
+                    <input readonly [(ngModel)]="user.username" style="text-align:center;" type="text" required="" placeholder="اسم الظابط  " value="" name="username" class="txt">
+                    <input readonly [(ngModel)]="cell_Number" style="text-align:center;" type="text" required="" placeholder="رقم النبطشية   " value="" name="cell_Number" class="txt">
+
+
+                    <select [(ngModel)]="selectedDuty" (click)="getSelectedOption($event)" style="width: 120px" id="singleSelect" >
+                      <option  *ngFor="let data of Dutys" value="{{data.ID}}">{{data.DutyType_Name}}</option>
                     </select>           
                        
                 </form>
+                <div class="container  "style="margin-left:180px">
+                  <button (click)="addShift()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
+                </div>
             </div>
             </div>
           </div>
