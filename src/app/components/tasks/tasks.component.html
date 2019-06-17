@@ -3,6 +3,7 @@
 <div class="container  "style="margin-left:580px;width:600px" >
   <form>
     <div class="form-group">
+
       <input  style="width: 200px ;float: left;" type="input" name="month" [(ngModel)]="month" class="form-control" id="Month" aria-describedby="emailHelp" placeholder="Enter email">
       <input style="width: 200px ;float: left;" type="input" name="year" [(ngModel)]="year" class="form-control" id="Year" aria-describedby="emailHelp" placeholder="Enter email">
     </div>
@@ -14,7 +15,7 @@
 
 </div>
 <div class="container  "style="margin-left:740px;width:800px;padding-top:10px">
-  <button (click)="tableChanged()" type="button" class="btn btn-primary"><b>إستعــــــــلام</b></button>
+  <button (click)="updateShiftList()" type="button" class="btn btn-primary"><b>إستعــــــــلام</b></button>
 </div>
 <div class="container  "style="margin-left:730px;width:200px;   padding-bottom: 50px;">
   
@@ -24,13 +25,20 @@
 
   </div>
   <div  *ngIf="this.shiftDetails" class="container  col-lg-offset-4">
-    <app-shift-details [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user" [dutyTypeName]="dutyTypeTemp"></app-shift-details>
+    <app-shift-details (updateShiftParent)="updateShiftList()"[month]="month" [year]="year" [shift_id]="updateFieldShiftID" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user" [dutyTypeName]="dutyTypeTemp"></app-shift-details>
   </div>
+
+  <div  *ngIf="this.firstShift" class="container  col-lg-offset-4">
+      <app-first-shift (updateShiftParent)="updateShiftList()"></app-first-shift>
+    </div>
+  
   <div *ngIf="spinnerTable" class="container  col-lg-offset-5"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div>
   
 
+  <div class="container  col-lg-offset-11">
+  </div>
 
-  
+
   
 <table class="table">
   <thead>
@@ -51,29 +59,29 @@
       <th scope="col">3</th>
       <th scope="col">2</th>
       <th scope="col">1</th>
-      <th scope="col">ضابط</th>
+      <th scope="col"><i  (click)="plusRecord()" class="fa fa-plus" style="float:left; font-size:20px;color:black"></i><div style="float: right"> ضـــــــابـــــــــــــــــــط </div> </th>
 
     </tr>
   </thead>
   <tbody>
     <tr *ngFor ="let data of  shifts">
 
-      <td><button  [ngClass]="{'btn-danger' : data[15].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[15].User_.ID}} name="16"   (click)="showShiftForm($event)" type="button" >{{data[15].Date}}</button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[14].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[14].User_.ID}} name="15"   (click)="showShiftForm($event)" type="button" >{{data[14].Date}}</button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[13].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[13].User_.ID}} name="14"   (click)="showShiftForm($event)" type="button" >{{data[13].Date}}</button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[12].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[12].User_.ID}} name="13"   (click)="showShiftForm($event)" type="button" >{{data[12].Date}}</button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[11].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[11].User_.ID}} name="12"   (click)="showShiftForm($event)" type="button" >{{data[11].Date}}</button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[10].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[10].User_.ID}} name="11"   (click)="showShiftForm($event)" type="button" >{{data[10].Date}}</button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[9].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[9].User_.ID}}  name="10"   (click)="showShiftForm($event)" type="button" >{{data[9].Date}} </button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[8].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[8].User_.ID}}  name="9"    (click)="showShiftForm($event)" type="button" >{{data[8].Date}} </button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[7].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[7].User_.ID}}  name="8"    (click)="showShiftForm($event)" type="button" >{{data[7].Date}} </button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[6].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[6].User_.ID}}  name="7"    (click)="showShiftForm($event)" type="button" >{{data[6].Date}} </button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[5].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[5].User_.ID}}  name="6"    (click)="showShiftForm($event)" type="button" >{{data[5].Date}} </button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[4].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[4].User_.ID}}  name="5"    (click)="showShiftForm($event)" type="button" >{{data[4].Date}} </button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[3].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[3].User_.ID}}  name="4"    (click)="showShiftForm($event)" type="button" >{{data[3].Date}} </button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[2].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[2].User_.ID}}  name="3"    (click)="showShiftForm($event)" type="button" >{{data[2].Date}} </button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[1].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[1].User_.ID}}  name="2"    (click)="showShiftForm($event)" type="button" >{{data[1].Date}} </button></td>
-      <td><button  [ngClass]="{'btn-danger' : data[0].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[0].User_.ID}}  name="1"    (click)="showShiftForm($event)" type="button" >{{data[0].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[15].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[15].User_.ID}} name="16" value="{{data[15].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[15].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[14].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[14].User_.ID}} name="15" value="{{data[14].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[14].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[13].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[13].User_.ID}} name="14" value="{{data[13].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[13].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[12].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[12].User_.ID}} name="13" value="{{data[12].ID}}" (click)="showShiftForm($event)" type="button" >{{data[12].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[11].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[11].User_.ID}} name="12" value="{{data[11].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[11].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[10].Date=='0001-01-01T00:00:00'}" style="width: 85px" class="btn btn-success" id={{data[10].User_.ID}} name="11" value="{{data[10].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[10].Date}}</button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[9].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[9].User_.ID}}  name="10" value="{{data[9].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[9].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[8].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[8].User_.ID}}  name="9"  value="{{data[8].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[8].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[7].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[7].User_.ID}}  name="8"  value="{{data[7].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[7].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[6].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[6].User_.ID}}  name="7"  value="{{data[6].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[6].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[5].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[5].User_.ID}}  name="6"  value="{{data[5].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[5].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[4].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[4].User_.ID}}  name="5"  value="{{data[4].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[4].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[3].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[3].User_.ID}}  name="4"  value="{{data[3].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[3].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[2].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[2].User_.ID}}  name="3"  value="{{data[2].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[2].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[1].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[1].User_.ID}}  name="2"  value="{{data[1].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[1].Date}} </button></td>
+      <td><button  [ngClass]="{'btn-danger' : data[0].Date=='0001-01-01T00:00:00'}"  style="width: 85px" class="btn btn-success" id={{data[0].User_.ID}}  name="1"  value="{{data[0].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[0].Date}} </button></td>
       <th scope="row">{{data[0].User_.MyRank.Rank_Name}} {{data[0].User_.MySpecialization.Specialization_Name}} / {{data[0].User_.username}} </th>
   </tbody>
 </table>

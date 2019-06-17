@@ -11,10 +11,12 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  updateFieldID:number;
-  updateFieldnum:number;
+  updateFieldID:number;                    // Button user ID
+  updateFieldnum:number;                   // Button Shift Number
+  updateFieldShiftID:number;              // Button Shift ID
   dutyTypeTemp:string;
   shiftFormFrag:boolean;
+  firstShift:boolean;
   shiftDetails:boolean;
   spinnerTable:boolean;
   month:number;
@@ -47,10 +49,13 @@ export class TasksComponent implements OnInit {
   showShiftForm(ele){
     this.updateFieldID=ele.currentTarget.id;
     this.updateFieldnum=ele.currentTarget.name;
+    this.updateFieldShiftID=ele.currentTarget.value;
     this.getUserData();
+    this.firstShift=false;
     if(ele.currentTarget.classList=='btn btn-success btn-danger'){
       this.shiftFormFrag=true;
       this.shiftDetails=false;
+
     }
     else{
       this.shiftFormFrag=false;
@@ -60,25 +65,24 @@ export class TasksComponent implements OnInit {
           for(let j=0;j<16;j++){
             if(this.shifts[i][j].DutyNum==this.updateFieldnum){
               this.dutyTypeTemp=this.shifts[i][j].DutyType_.DutyType_Name
+              console.log(this.dutyTypeTemp)
               break;
             }
           }
         }
-        break;
       }
     }
 
   }
   updateShiftList(){
+    this.shiftFormFrag=false;
+    this.shiftDetails=false;
+    this.firstShift=false;
     this.shifts=null;
     this.spinnerTable=true;
     this.getShifts();
   }
-  tableChanged(){
-    this.shifts=null;
-    this.spinnerTable=true;
-    this.getShifts();
-  }
+  
   getUserData(){
     this.userService.getUser(this.updateFieldID).subscribe(
       data=>{
@@ -86,6 +90,11 @@ export class TasksComponent implements OnInit {
       },
       error=>{}
     )
+  }
+  plusRecord(){
+    this.shiftFormFrag=false;
+    this.shiftDetails=false;
+    this.firstShift=true;
   }
 }
 

@@ -1,0 +1,35 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+    <div class="col-md-4">
+		<div class="form_main">
+        <div *ngIf="alertFlag" style="text-align: center"  class="alert alert-danger" role="alert">
+            المستخدم موجود في هذا الشهر
+            </div>
+                <h4 class="heading"><strong> أضــــافة اول </strong> نبــــــــطشية <span></span></h4>
+                <div class="form">
+                <form  id="contactFrm" name="contactFrm">
+                    <input [(ngModel)]="date" style="text-align:right;" type="date" required=""  name="name" class="txt">
+                    <input [(ngModel)]="this.user.ID" (change)="getUser()" style="text-align:center;" type="text" required="" placeholder="كود الظابط  " value="" name="usercode" class="txt">
+
+                    <input readonly [(ngModel)]="this.user.username" style="text-align:center;" type="text" required="" placeholder="اسم الظابط  " value="" name="username" class="txt">
+                    <input readonly style="text-align:center;" type="text" required="" placeholder="رقم النبطشية   " value="1" name="cell_Number" class="txt">
+
+
+                    <select (click)="getSelectedOption($event)" style="width: 120px" id="singleSelect" >
+                        <option  *ngFor="let data of Dutys" value="{{data.ID}}">{{data.DutyType_Name}}</option>
+                      </select>           
+                       
+                </form>
+                <div class="container  "style="margin-left:180px">
+                  <button (click)="addShift()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
+                </div>
+            </div>
+            </div>
+          </div>
+	</div>
+</div>

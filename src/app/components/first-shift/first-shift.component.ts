@@ -1,26 +1,28 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DutyService } from 'src/app/services/duty.service';
 import { DutyType } from 'src/app/models/DutyType';
 import { User } from 'src/app/models/User';
 import { Shift } from 'src/app/models/Shift';
+import { DutyService } from 'src/app/services/duty.service';
 import { TaskService } from 'src/app/services/task.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-shift-form',
-  templateUrl: './shift-form.component.html',
-  styleUrls: ['./shift-form.component.css']
+  selector: 'app-first-shift',
+  templateUrl: './first-shift.component.html',
+  styleUrls: ['./first-shift.component.css']
 })
-export class ShiftFormComponent implements OnInit {
-  @Input() user_ID;
-  @Input() cell_Number;
-  @Input() user:User;
+export class FirstShiftComponent implements OnInit {
+
   @Output() updateShiftParent =new EventEmitter();
-  selectedDutyID:number;
+  user:User;
+  selectedDutyID:number=1;
   date:string;
   Dutys:Array<DutyType>;
   newShift:Shift;
-  alertFlag:boolean=false;
-  constructor(private dutyService:DutyService,private taskService:TaskService) {
+  alertFlag: boolean=false;
+  
+  constructor(private dutyService:DutyService,private taskService:TaskService,private userService:UserService) {
+    this.user=new User();
     this.newShift=new Shift();
    }
 
@@ -33,8 +35,17 @@ export class ShiftFormComponent implements OnInit {
       data=>{
         this.Dutys=data;
       },
+      error=>{}
+    )
+  }
+  getUser(){
+    this.userService.getUser(this.user.ID).subscribe(
+      data=>{
+        console.log(data)
+        this.user=data
+      },
       error=>{
-        this.alertFlag=true;
+        this.user.username="كود غير صحيح"
       }
     )
   }
@@ -42,20 +53,18 @@ export class ShiftFormComponent implements OnInit {
     this.selectedDutyID=ele.target.value;
   }
   addShift(){
-    console.log(this.date)
     this.newShift.User_=this.user;
-    this.newShift.DutyNum=this.cell_Number;
+    this.newShift.DutyNum=1;
     this.newShift.Date=this.date;
     this.newShift.DutyType_.ID=this.selectedDutyID;
-    this.taskService.addShift(this.newShift).subscribe(
+    this.taskService.addFirstShift(this.newShift).subscribe(
       data=>{
         this.call_parent();
       },
-      error=>{ console.log(error); this.alertFlag=true;    }
+      error=>{ this.alertFlag=true;    }
     )
   }
   call_parent(){
     this.updateShiftParent.next();
   }
-
 }

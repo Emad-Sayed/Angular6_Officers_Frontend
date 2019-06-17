@@ -11,12 +11,20 @@ export class TaskService {
   URL:string;
   constructor(private http:HttpClient ) {}
   getShifts(Month:number,Year:number):Observable<Array<Array<Shift>>>{
-    this.URL=this.mainURL+'GetShifts?month='+Month+"&year="+Year
+    this.URL=this.mainURL+'GetShifts?month='+Month+"&year="+Year;
     return this.http.get<Array<Array<Shift>>>(this.URL);
   }
 
   addShift(shift:Shift){
     this.URL=this.mainURL+'postshift'
+    return this.http.post(this.URL,shift);
+  }
+  addFirstShift(shift:Shift){
+    this.URL=this.mainURL+'PostFirstShift'
+    return this.http.post(this.URL,shift);
+  }
+  deleteShift(shift:Shift){
+    this.URL=this.mainURL+'PostDeleteShift';
     return this.http.post(this.URL,shift);
   }
 
