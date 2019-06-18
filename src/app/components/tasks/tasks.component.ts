@@ -24,6 +24,7 @@ export class TasksComponent implements OnInit {
   newshift:Shift;
   user:User;
   shifts:Array<Array<Shift>>;
+  alertFlag: boolean=false;
   constructor(private taksService:TaskService,private dutyService:DutyService,private userService:UserService) { 
     this.month=6;
     this.year=2019;
@@ -42,8 +43,12 @@ export class TasksComponent implements OnInit {
       data=>{
         this.shifts=data;
         this.spinnerTable=false;
+         this.alertFlag=false;
       },
-      error=>{console.log(error)}
+      error=>{
+        this.alertFlag=true;
+        this.spinnerTable=false;
+      }
     )
   }
   showShiftForm(ele){

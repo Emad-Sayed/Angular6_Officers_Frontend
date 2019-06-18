@@ -13,13 +13,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class FirstShiftComponent implements OnInit {
 
+  @Input() month
   @Output() updateShiftParent =new EventEmitter();
   user:User;
   selectedDutyID:number=1;
-  date:string;
+  date:Date;
   Dutys:Array<DutyType>;
   newShift:Shift;
   alertFlag: boolean=false;
+  alertMessage: string;
+  submitFlag: boolean=false;
   
   constructor(private dutyService:DutyService,private taskService:TaskService,private userService:UserService) {
     this.user=new User();
@@ -38,14 +41,15 @@ export class FirstShiftComponent implements OnInit {
       error=>{}
     )
   }
-  getUser(){
+  getUser(ele){
     this.userService.getUser(this.user.ID).subscribe(
       data=>{
-        console.log(data)
         this.user=data
+        this.submitFlag=true;
       },
       error=>{
         this.user.username="كود غير صحيح"
+        this.submitFlag=false;
       }
     )
   }
@@ -55,14 +59,24 @@ export class FirstShiftComponent implements OnInit {
   addShift(){
     this.newShift.User_=this.user;
     this.newShift.DutyNum=1;
-    this.newShift.Date=this.date;
+    this.newShift.Date=new Date(this.date);
     this.newShift.DutyType_.ID=this.selectedDutyID;
-    this.taskService.addFirstShift(this.newShift).subscribe(
-      data=>{
-        this.call_parent();
-      },
-      error=>{ this.alertFlag=true;    }
-    )
+    if(this.newShift.Date.getMonth()+1==this.month){
+      this.taskService.addFirstShift(this.newShift).subscribe(
+        data=>{
+          this.call_parent();
+        },
+        error=>{ 
+          this.alertFlag=true;   
+          this.alertMessage=" المريض متواجد في هذا الشهر "
+         }
+      )
+    }
+    else{
+      this.alertFlag=true;   
+      this.alertMessage="الشهر غير متطابق"
+    }
+
   }
   call_parent(){
     this.updateShiftParent.next();

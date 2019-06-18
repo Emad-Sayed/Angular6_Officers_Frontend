@@ -5,10 +5,11 @@ export class Shift{
     ID:number;
     DutyNum:number;
     User_:User;
-    Date:string;
+    Date:Date;
     DutyType_:DutyType;
     Month:number;
     Year:number
+    Day:number
     constructor(){
         this.User_=new User();
         this.DutyType_=new DutyType()

@@ -8,7 +8,7 @@
     <div class="col-md-4">
 		<div class="form_main">
         <div *ngIf="alertFlag" style="text-align: center"  class="alert alert-danger" role="alert">
-            المستخدم موجود في هذا الشهر
+          {{alertMessage}}
             </div>
                 <h4 class="heading"><strong> أضــــافة اول </strong> نبــــــــطشية <span></span></h4>
                 <div class="form">
@@ -26,7 +26,7 @@
                        
                 </form>
                 <div class="container  "style="margin-left:180px">
-                  <button (click)="addShift()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
+                  <button *ngIf="submitFlag" (click)="addShift()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
                 </div>
             </div>
             </div>

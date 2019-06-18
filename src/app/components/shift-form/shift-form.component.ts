@@ -14,12 +14,14 @@ export class ShiftFormComponent implements OnInit {
   @Input() user_ID;
   @Input() cell_Number;
   @Input() user:User;
+  @Input() month;
   @Output() updateShiftParent =new EventEmitter();
   selectedDutyID:number;
-  date:string;
+  date:Date;
   Dutys:Array<DutyType>;
   newShift:Shift;
   alertFlag:boolean=false;
+  alertMessage: string;
   constructor(private dutyService:DutyService,private taskService:TaskService) {
     this.newShift=new Shift();
    }
@@ -45,14 +47,25 @@ export class ShiftFormComponent implements OnInit {
     console.log(this.date)
     this.newShift.User_=this.user;
     this.newShift.DutyNum=this.cell_Number;
-    this.newShift.Date=this.date;
+    this.newShift.Date=new Date(this.date);
     this.newShift.DutyType_.ID=this.selectedDutyID;
-    this.taskService.addShift(this.newShift).subscribe(
-      data=>{
-        this.call_parent();
-      },
-      error=>{ console.log(error); this.alertFlag=true;    }
-    )
+    if(this.newShift.Date.getMonth()+1==this.month){
+      this.taskService.addShift(this.newShift).subscribe(
+        data=>{
+          this.call_parent();
+        },
+        error=>{ 
+          console.log(error);
+           this.alertFlag=true;
+           this.alertMessage=" لا يمكن اجراء هذه العملية  ";
+          }
+      )
+    }
+    else{
+      this.alertFlag=true;
+      this.alertMessage="الشهر غير متطابق";
+    }
+
   }
   call_parent(){
     this.updateShiftParent.next();

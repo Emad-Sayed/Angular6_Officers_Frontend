@@ -8,7 +8,7 @@
     <div class="col-md-4">
 		<div class="form_main">
         <div style="text-align: center" *ngIf="alertFlag" class="alert alert-danger" role="alert">
-           لا يمكن اجراء هذه العملية
+           {{alertMessage}}
           </div>
                 <h4 class="heading"><strong>أضــــافة </strong> نبــــــــطشية <span></span></h4>
                 <div class="form">
@@ -18,7 +18,7 @@
                     <input readonly [(ngModel)]="cell_Number" style="text-align:center;" type="text" required="" placeholder="رقم النبطشية   " value="" name="cell_Number" class="txt">
 
 
-                    <select [(ngModel)]="selectedDuty" (click)="getSelectedOption($event)" style="width: 120px" id="singleSelect" >
+                    <select (click)="getSelectedOption($event)" style="width: 120px" id="singleSelect" >
                       <option  *ngFor="let data of Dutys" value="{{data.ID}}">{{data.DutyType_Name}}</option>
                     </select>           
                        
