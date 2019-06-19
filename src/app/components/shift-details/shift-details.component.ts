@@ -18,6 +18,7 @@ export class ShiftDetailsComponent implements OnInit {
   @Input() year;
   shiftDeleted:Shift
   @Output() updateShiftParent =new EventEmitter();
+  @Output() closeComponent =new EventEmitter();
   alertFlag: boolean=false;
   constructor(private taskService:TaskService) {
     this.shiftDeleted=new Shift();
@@ -42,5 +43,9 @@ export class ShiftDetailsComponent implements OnInit {
         error=>{this.alertFlag=true}
       )
     }
+  }
+  closeThisComponent(){
+    this.alertFlag=false;
+    this.closeComponent.next();
   }
 }

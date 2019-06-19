@@ -15,6 +15,7 @@ export class TasksComponent implements OnInit {
   updateFieldnum:number;                   // Button Shift Number
   updateFieldShiftID:number;              // Button Shift ID
   dutyTypeTemp:string;
+
   shiftFormFrag:boolean;
   firstShift:boolean;
   shiftDetails:boolean;
@@ -25,6 +26,9 @@ export class TasksComponent implements OnInit {
   user:User;
   shifts:Array<Array<Shift>>;
   alertFlag: boolean=false;
+  searchField:string;
+  searhFlag:boolean=false;
+  formFlag:boolean=true;
   constructor(private taksService:TaskService,private dutyService:DutyService,private userService:UserService) { 
     this.month=6;
     this.year=2019;
@@ -100,6 +104,33 @@ export class TasksComponent implements OnInit {
     this.shiftFormFrag=false;
     this.shiftDetails=false;
     this.firstShift=true;
+  }
+  Search(){
+    this.formFlag=false;
+    this.searhFlag=true;
+  }
+  Filter(){
+    if(this.searchField==""){
+      this.getShifts();
+    }
+
+    this.shifts=this.shifts.filter(
+      res=>{return res[0].User_.username.match(this.searchField)
+         }
+    )
+  }
+  removeSearchField(){
+    this.searhFlag=false;
+    this.formFlag=true;
+  }
+  closeFirstShiftComponent(){
+    this.firstShift=false;
+  }
+  closeDetailsShiftComponent(){
+    this.shiftDetails=false;
+  }
+  closeFormShiftComponent(){
+    this.shiftFormFrag=false;
   }
 }
 

@@ -16,6 +16,7 @@ export class ShiftFormComponent implements OnInit {
   @Input() user:User;
   @Input() month;
   @Output() updateShiftParent =new EventEmitter();
+  @Output() closeComponent =new EventEmitter();
   selectedDutyID:number;
   date:Date;
   Dutys:Array<DutyType>;
@@ -69,6 +70,10 @@ export class ShiftFormComponent implements OnInit {
   }
   call_parent(){
     this.updateShiftParent.next();
+  }
+  closeThisComponent(){
+    this.alertFlag=false;
+    this.closeComponent.next();
   }
 
 }

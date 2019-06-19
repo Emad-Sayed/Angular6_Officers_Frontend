@@ -15,6 +15,7 @@ export class FirstShiftComponent implements OnInit {
 
   @Input() month
   @Output() updateShiftParent =new EventEmitter();
+  @Output() closeComponent =new EventEmitter();
   user:User;
   selectedDutyID:number=1;
   date:Date;
@@ -80,5 +81,9 @@ export class FirstShiftComponent implements OnInit {
   }
   call_parent(){
     this.updateShiftParent.next();
+  }
+  closeThisComponent(){
+    this.alertFlag=false;
+    this.closeComponent.next();
   }
 }

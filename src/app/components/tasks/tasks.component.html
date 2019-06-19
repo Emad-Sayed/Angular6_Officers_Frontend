@@ -1,11 +1,12 @@
 
 
-<div class="container  "style="margin-left:580px;width:600px" >
+<div *ngIf="formFlag" class="container  "style="margin-left:580px;width:600px" >
   <form>
     <div class="form-group">
       <div *ngIf="alertFlag" class="alert alert-danger" style="text-align: center; width: 400px" role="alert">
         لا يوجد بيانات مسجلة لهذا التاريخ
       </div>
+
       <input  style="width: 200px ;float: left;"  type="number" name="month" [(ngModel)]="month" class="form-control" id="Month" placeholder="ادخل الشهر">
       <input style="width: 200px ;float: left;"  type="number" name="year" [(ngModel)]="year" class="form-control" id="Year" placeholder="ادخل السنة">
     </div>
@@ -14,22 +15,31 @@
   </form>
 
 </div>
-<div class="container  "style="margin-left:700px;width:800px;padding-top:10px">
-  <button (click)="updateShiftList()" type="button" class="btn btn-primary"><b> جدول شهر {{this.month}} سنة {{this.year}} </b></button>
+
+<div *ngIf="formFlag"  class="container  "style="margin-left:700px;width:800px;padding-top:10px">
+    <button (click)="updateShiftList()" type="button" class="btn btn-primary"><b> جدول شهر {{this.month}} سنة {{this.year}} </b></button>
+  </div>
+
+
+<div *ngIf="searhFlag"  style="margin-right: 50px; width: 350px;"class="container  col-lg-offset-5">
+  <input (input)="Filter()" style="float: left;  width: 250px;" type="text" name="" [(ngModel)]="searchField" class="form-control" id="search" placeholder="">
+  <i  (click)="removeSearchField()" style="float: left;font-size: 30px; padding-left: 5px "class="fa fa-times"></i>
 </div>
+
+
 <div class="container  "style="margin-left:730px;width:200px;   padding-bottom: 50px;">
   
   </div>
   <div  *ngIf="this.shiftFormFrag" class="container  col-lg-offset-4">
-    <app-shift-form (updateShiftParent)="updateShiftList()" [month]="month" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user"></app-shift-form>
+    <app-shift-form (updateShiftParent)="updateShiftList()" (closeComponent)="closeFormShiftComponent()" [month]="month" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user"></app-shift-form>
 
   </div>
   <div  *ngIf="this.shiftDetails" class="container  col-lg-offset-4">
-    <app-shift-details (updateShiftParent)="updateShiftList()"[month]="month" [year]="year" [shift_id]="updateFieldShiftID" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user" [dutyTypeName]="dutyTypeTemp"></app-shift-details>
+    <app-shift-details (updateShiftParent)="updateShiftList()" (closeComponent)="closeDetailsShiftComponent()" [month]="month" [year]="year" [shift_id]="updateFieldShiftID" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user" [dutyTypeName]="dutyTypeTemp"></app-shift-details>
   </div>
 
   <div  *ngIf="this.firstShift" class="container  col-lg-offset-4">
-      <app-first-shift (updateShiftParent)="updateShiftList()" [month]="month"></app-first-shift>
+      <app-first-shift (updateShiftParent)="updateShiftList()" (closeComponent)="closeFirstShiftComponent()" [month]="month"></app-first-shift>
     </div>
   
   <div *ngIf="spinnerTable" class="container  col-lg-offset-5"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div>
@@ -59,7 +69,11 @@
       <th scope="col">3</th>
       <th scope="col">2</th>
       <th scope="col">1</th>
-      <th scope="col"><a (click)="plusRecord()" class="fa fa-plus" style="float:left; font-size:20px;color:black"></a><div style="float: right"> ضـــــــابـــــــــــــــــــط </div> </th>
+      <th scope="col">
+        <a (click)="plusRecord()" class="fa fa-plus" style="float:left; font-size:23px;color:black"></a>
+        <a (click)="Search()"style="float:left;margin-left: 10px;font-size:20px;color:black" class="fa fa-search"></a>
+        <div style="float: right"> ضـــــــابـــــــــــــــــــط </div>
+       </th>
 
     </tr>
   </thead>
