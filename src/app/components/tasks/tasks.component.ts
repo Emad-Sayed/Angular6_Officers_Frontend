@@ -56,6 +56,7 @@ export class TasksComponent implements OnInit {
     )
   }
   showShiftForm(ele){
+    this.removeSearchField();
     this.updateFieldID=ele.currentTarget.id;
     this.updateFieldnum=ele.currentTarget.name;
     this.updateFieldShiftID=ele.currentTarget.value;
@@ -101,11 +102,15 @@ export class TasksComponent implements OnInit {
     )
   }
   plusRecord(){
+    this.removeSearchField();
     this.shiftFormFrag=false;
     this.shiftDetails=false;
     this.firstShift=true;
   }
   Search(){
+    this.shiftDetails=false;
+    this.shiftFormFrag=false;
+    this.firstShift=false
     this.formFlag=false;
     this.searhFlag=true;
   }
