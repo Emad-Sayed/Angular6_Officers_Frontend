@@ -18,7 +18,7 @@
                     <input [(ngModel)]="date" style="text-align:right;" type="date" required=""  name="name" class="txt">
                     <input [(ngModel)]="this.user.ID" (change)="getUser()" style="text-align:center;" type="text" required="" placeholder="كود الظابط  " value="" name="usercode" class="txt">
 
-                    <input readonly [(ngModel)]="this.user.username" style="text-align:center;" type="text" required="" placeholder="اسم الظابط  " value="" name="username" class="txt">
+                    <input readonly [(ngModel)]="this.user.name" style="text-align:center;" type="text" required="" placeholder="اسم الظابط  " value="" name="name" class="txt">
                     <input readonly style="text-align:center;" type="text" required="" placeholder="رقم النبطشية   " value="1" name="cell_Number" class="txt">
 
 
@@ -28,7 +28,7 @@
                        
                 </form>
                 <div class="container  "style="margin-left:180px">
-                  <button *ngIf="submitFlag" (click)="addShift()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
+                  <button *ngIf="submitFlag" (click)="addShift()" type="button" class="btn btn-primary btn-md"><b>إضــــافــــــــــــة</b></button>
                 </div>
             </div>
             </div>

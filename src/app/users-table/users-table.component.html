@@ -1,0 +1,47 @@
+
+<div  class="container col-lg-offset-5 " >
+    <form>
+      <div class="form-group">
+      <input (input)="Filter()" style="width: 200px;text-align: center"  type="text" name="textSearch" [(ngModel)]="textSearch"
+       class="form-control " id="textSearch" placeholder="ادخل اسم المستخدم">
+      </div>
+    </form>
+ </div>
+
+
+
+
+ <div *ngIf="spinnerTable" class="container  col-lg-offset-6"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div>
+
+
+
+<table class="table">
+
+    <tbody>
+      <tr *ngFor="let data of users">
+       <td><button id="{{data.ID}}" (click)="deleteUser($event)" class="btn btn-danger">مــســح</button></td>
+       <td><button id="{{data.ID}}" (click)="updateUser($event)" class="btn btn-warning">تعـديـل</button></td>
+       <td><button id="{{data.ID}}" (click)="detailsUser($event)" class="btn btn-success">تفاصيل</button></td>
+        <td>{{data.MyType.Type_Name}}</td>
+        <td>{{data.MySpecialization.Specialization_Name}}</td>
+        <td>{{data.MyDegree.Degree_Name}}</td>
+        <td>{{data.MyRank.Rank_Name}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.ID}}</td>
+      </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th scope="col">مسح</th>
+            <th scope="col">تعديل</th>
+            <th scope="col">تفاصيل</th>
+            <th scope="col">الصلاحية</th>
+            <th scope="col">التخصص</th>
+            <th scope="col">الدرجة</th>
+            <th scope="col">الرتبة</th>
+            <th scope="col">الاسم</th>
+          <th scope="col">كود المستخدم</th>
+
+        </tr>
+      </thead>
+  </table>

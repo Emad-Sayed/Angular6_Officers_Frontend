@@ -10,6 +10,10 @@ export class UserService {
   mainURL:string ="http://localhost:50135/api/user";
   constructor(private http:HttpClient) { }
   getUser(id:number):Observable<User>{
-    return this.http.get<User>(this.mainURL+"/getuser?id="+id)
+    return this.http.get<User>(this.mainURL+"/getuser?id="+id);
+  }
+  getUsers():Observable<Array<User>>{
+    let URL:string=this.mainURL+"/getusers";
+    return this.http.get<Array<User>>(URL);
   }
 }

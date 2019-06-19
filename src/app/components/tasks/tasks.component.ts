@@ -116,11 +116,12 @@ export class TasksComponent implements OnInit {
   }
   Filter(){
     if(this.searchField==""){
+      this.spinnerTable=true;
       this.getShifts();
     }
 
     this.shifts=this.shifts.filter(
-      res=>{return res[0].User_.username.match(this.searchField)
+      res=>{return res[0].User_.name.match(this.searchField)
          }
     )
   }

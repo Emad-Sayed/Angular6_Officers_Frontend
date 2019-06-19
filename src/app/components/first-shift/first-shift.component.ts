@@ -49,7 +49,7 @@ export class FirstShiftComponent implements OnInit {
         this.submitFlag=true;
       },
       error=>{
-        this.user.username="كود غير صحيح"
+        this.user.name="كود غير صحيح"
         this.submitFlag=false;
       }
     )
@@ -58,6 +58,7 @@ export class FirstShiftComponent implements OnInit {
     this.selectedDutyID=ele.target.value;
   }
   addShift(){
+    if(this.date!=null){
     this.newShift.User_=this.user;
     this.newShift.DutyNum=1;
     this.newShift.Date=new Date(this.date);
@@ -68,14 +69,20 @@ export class FirstShiftComponent implements OnInit {
           this.call_parent();
         },
         error=>{ 
-          this.alertFlag=true;   
           this.alertMessage=" المريض متواجد في هذا الشهر "
+          this.alertFlag=true;   
          }
       )
     }
     else{
-      this.alertFlag=true;   
       this.alertMessage="الشهر غير متطابق"
+      this.alertFlag=true;   
+    }
+
+    }
+    else{
+      this.alertMessage="من فضلك ادخل التاريخ !";
+      this.alertFlag=true;
     }
 
   }

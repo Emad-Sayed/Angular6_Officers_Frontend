@@ -21,7 +21,7 @@
   </div>
 
 
-<div *ngIf="searhFlag"  style="margin-right: 50px; width: 350px;"class="container  col-lg-offset-5">
+<div *ngIf="searhFlag"  style="margin-right: 50px; width: 350px;text-align: center"class="container  col-lg-offset-5">
   <input (input)="Filter()" style="float: left;  width: 250px;" type="text" name="" [(ngModel)]="searchField" class="form-control" id="search" placeholder="">
   <i  (click)="removeSearchField()" style="float: left;font-size: 30px; padding-left: 5px "class="fa fa-times"></i>
 </div>
@@ -96,7 +96,7 @@
       <td><button  [ngClass]="{'btn-danger' : data[2].Date=='0001-01-01T00:00:00'}"  style="width: 80px" class="btn btn-success" id={{data[2].User_.ID}}  name="3"  value="{{data[2].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[2].Day}}/{{data[2].Month}}/{{data[2].Year}} </button></td>
       <td><button  [ngClass]="{'btn-danger' : data[1].Date=='0001-01-01T00:00:00'}"  style="width: 80px" class="btn btn-success" id={{data[1].User_.ID}}  name="2"  value="{{data[1].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[1].Day}}/{{data[1].Month}}/{{data[1].Year}} </button></td>
       <td><button  [ngClass]="{'btn-danger' : data[0].Date=='0001-01-01T00:00:00'}"  style="width: 80px" class="btn btn-success" id={{data[0].User_.ID}}  name="1"  value="{{data[0].ID}}"  (click)="showShiftForm($event)" type="button" >{{data[0].Day}}/{{data[0].Month}}/{{data[0].Year}} </button></td>
-      <th scope="row">{{data[0].User_.MyRank.Rank_Name}} {{data[0].User_.MySpecialization.Specialization_Name}} / {{data[0].User_.username}} </th>
+      <th scope="row">{{data[0].User_.MyRank.Rank_Name}} {{data[0].User_.MySpecialization.Specialization_Name}} / {{data[0].User_.name}} </th>
   </tbody>
 </table>
 

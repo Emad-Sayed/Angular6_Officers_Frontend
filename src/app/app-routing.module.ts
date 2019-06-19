@@ -8,6 +8,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { ShiftFormComponent } from './components/shift-form/shift-form.component';
 import { ShiftDetailsComponent } from './components/shift-details/shift-details.component';
 import { FirstShiftComponent } from './components/first-shift/first-shift.component';
+import { UsersTableComponent } from './users-table/users-table.component';
 
 const routes: Routes = [
   { path: '', component:LoginComponent  },
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path:'tasks',component:TasksComponent
+  },
+  {
+    path:'users',component:UsersTableComponent
   }
   ] },
   {path:'shift',component:ShiftFormComponent},
@@ -30,4 +34,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponent=[LoginComponent,NavbarComponent,HomeComponent,MyfooterComponent,
-  TasksComponent,ShiftFormComponent,ShiftDetailsComponent,FirstShiftComponent]
+  TasksComponent,ShiftFormComponent,ShiftDetailsComponent,FirstShiftComponent,UsersTableComponent]

@@ -45,7 +45,7 @@ export class ShiftFormComponent implements OnInit {
     this.selectedDutyID=ele.target.value;
   }
   addShift(){
-    console.log(this.date)
+    if(this.date!=null){
     this.newShift.User_=this.user;
     this.newShift.DutyNum=this.cell_Number;
     this.newShift.Date=new Date(this.date);
@@ -56,16 +56,21 @@ export class ShiftFormComponent implements OnInit {
           this.call_parent();
         },
         error=>{ 
-          console.log(error);
+          this.alertMessage=" لا يمكن اجراء هذه العملية  ";
            this.alertFlag=true;
-           this.alertMessage=" لا يمكن اجراء هذه العملية  ";
           }
       )
     }
     else{
-      this.alertFlag=true;
       this.alertMessage="الشهر غير متطابق";
+      this.alertFlag=true;
+
     }
+  }
+  else{
+    this.alertMessage="من فضلك ادخل التاريخ !";
+    this.alertFlag=true;
+  }
 
   }
   call_parent(){

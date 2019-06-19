@@ -7,6 +7,7 @@ export class User{
     ID:number;
     username:string;
     password:string;
+    name:string;
     MyType:Type;
     MySpecialization:Specialization;
     MyDegree:Degree;
