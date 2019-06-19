@@ -62,7 +62,7 @@ export class TasksComponent implements OnInit {
     this.updateFieldShiftID=ele.currentTarget.value;
     this.getUserData();
     this.firstShift=false;
-    if(ele.currentTarget.classList=='btn btn-success btn-danger'){
+    if(ele.currentTarget.classList=='btn btn-light'){
       this.shiftFormFrag=true;
       this.shiftDetails=false;
 
