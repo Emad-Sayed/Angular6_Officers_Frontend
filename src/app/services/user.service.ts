@@ -16,4 +16,12 @@ export class UserService {
     let URL:string=this.mainURL+"/getusers";
     return this.http.get<Array<User>>(URL);
   }
+  DeleteUserHistory(id:number){
+    let URL=this.mainURL+"/delete_userhistory?id="+id;
+    return this.http.delete(URL);
+  }
+  EditUserInfo(user:User){
+    let URL=this.mainURL+"/post_edituserinfo";
+    this.http.post(URL,user);
+  }
 }
