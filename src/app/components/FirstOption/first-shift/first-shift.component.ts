@@ -17,48 +17,47 @@ export class FirstShiftComponent implements OnInit {
   @Output() updateShiftParent =new EventEmitter();
   @Output() closeComponent =new EventEmitter();
   user:User;
-  selectedDutyID:number=1;
+  selectedDutyID:number=0;
   date:Date;
   Dutys:Array<DutyType>;
   newShift:Shift;
   alertFlag: boolean=false;
   alertMessage: string;
+  selectedDutyName:string;
   submitFlag: boolean=false;
-  
+  searchNameFlag=false;
+  searchButtonFlag=true;
   constructor(private dutyService:DutyService,private taskService:TaskService,private userService:UserService) {
     this.user=new User();
     this.newShift=new Shift();
    }
 
   ngOnInit() {
-    this.getDuties();
   }
 
   getDuties(){
-    this.dutyService.getDuties().subscribe(
+    this.dutyService.getDuties(this.user.ID).subscribe(
       data=>{
         this.Dutys=data;
       },
       error=>{}
     )
   }
-  getUser(ele){
-    this.userService.getUser(this.user.ID).subscribe(
-      data=>{
-        this.user=data
-        this.submitFlag=true;
-      },
-      error=>{
-        this.user.name="كود غير صحيح"
-        this.submitFlag=false;
-      }
-    )
+  setUser(selectedUser:User){
+    this.user=selectedUser;
+    this.getDuties();
+    this.searchNameFlag=false;
+    this.submitFlag=true;
+    this.searchButtonFlag=false;
   }
   getSelectedOption(ele){
     this.selectedDutyID=ele.target.value;
   }
+  getOfficerCode(){
+    this.searchNameFlag=true;
+  }
   addShift(){
-    if(this.date!=null){
+    if(this.date!=null&&this.selectedDutyID!=0){
     this.newShift.User_=this.user;
     this.newShift.DutyNum=1;
     this.newShift.Date=new Date(this.date);
@@ -69,7 +68,7 @@ export class FirstShiftComponent implements OnInit {
           this.call_parent();
         },
         error=>{ 
-          this.alertMessage=" المريض متواجد في هذا الشهر "
+          this.alertMessage=" الضابط متواجد في هذا الشهر "
           this.alertFlag=true;   
          }
       )
@@ -81,7 +80,7 @@ export class FirstShiftComponent implements OnInit {
 
     }
     else{
-      this.alertMessage="من فضلك ادخل التاريخ !";
+      this.alertMessage="  من فضلك ادخل التاريخ و نوع النبطشية !";
       this.alertFlag=true;
     }
 

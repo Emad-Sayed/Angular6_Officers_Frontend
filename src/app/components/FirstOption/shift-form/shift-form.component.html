@@ -19,12 +19,12 @@
                     <input readonly [(ngModel)]="cell_Number" style="text-align:center;" type="text" required="" placeholder="رقم النبطشية   " value="" name="cell_Number" class="txt">
 
 
-                    <select (click)="getSelectedOption($event)" style="width: 120px" id="singleSelect" >
-                      <option  *ngFor="let data of Dutys" value="{{data.ID}}">{{data.DutyType_Name}}</option>
+                    <select  [(ngModel)]="selectedDutyName" (click)="getSelectedOption($event)" style="width: 350px" id="singleSelect" >
+                      <option *ngFor="let data of Dutys" value="{{data.dutyType.ID}}">{{data.dutyType.DutyType_Name}}</option>
                     </select>           
                        
                 </form>
-                <div class="container  "style="margin-left:180px">
+                <div class="container  "style="margin-left:180px;padding:10px ">
                   <button (click)="addShift()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
                 </div>
             </div>

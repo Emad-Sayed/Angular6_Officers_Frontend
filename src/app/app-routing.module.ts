@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/Common/login/login.component';
 import { HomeComponent } from './components/FirstOption/home/home.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { MyfooterComponent } from './components/myfooter/myfooter.component';
+import { NavbarComponent } from './components/Common/navbar/navbar.component';
+import { MyfooterComponent } from './components/Common/myfooter/myfooter.component';
 import { TasksComponent } from './components/FirstOption/tasks/tasks.component';
 import { ShiftFormComponent } from './components/FirstOption/shift-form/shift-form.component';
 import { ShiftDetailsComponent } from './components/FirstOption/shift-details/shift-details.component';

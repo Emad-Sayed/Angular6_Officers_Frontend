@@ -22,6 +22,10 @@ export class UserService {
   }
   EditUserInfo(user:User){
     let URL=this.mainURL+"/post_edituserinfo";
-    this.http.post(URL,user);
+    return this.http.post(URL,user);
+  }
+  getUsersByName(name:string):Observable<Array<User>>{
+    let URL=this.mainURL+"/getUsersByName?name="+name;
+    return this.http.get<Array<User>>(URL);
   }
 }

@@ -76,7 +76,6 @@ export class TasksComponent implements OnInit {
             if(this.shifts[i][j].DutyNum==this.updateFieldnum){
               this.dutyTypeTemp=this.shifts[i][j].DutyType_.DutyType_Name
               console.log(this.dutyTypeTemp)
-              break;
             }
           }
         }

@@ -10,8 +10,8 @@ export class DutyService {
   mainURL:string ="http://localhost:50135/api/duty/"
   URL:string;
   constructor(private http:HttpClient ) {}
-  getDuties(URL?:string):Observable<Array<DutyType>>{
-    this.URL=this.mainURL+'/GetDuties';
+  getDuties(id:number):Observable<Array<DutyType>>{
+    this.URL=this.mainURL+'/GetDuties?id='+id;
     return this.http.get<Array<DutyType>>(this.URL);
   }
 
