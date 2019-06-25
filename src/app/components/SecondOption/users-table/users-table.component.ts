@@ -12,10 +12,10 @@ export class UsersTableComponent implements OnInit {
   selectedUserID:number;
   spinnerTable:boolean;
   users:Array<User>;
-  alertFlag:boolean;
-  alertMessage:string="asd"
+  updateFlag:boolean;
   constructor(private userService:UserService) {
     this.spinnerTable=true;
+    this.updateFlag=false;
     this.getUsers();
    }
 
@@ -43,20 +43,28 @@ deleteUser(ele){
   this.selectedUserID=ele.currentTarget.id;
   var con=confirm("هل انت متأكد من حذف جميع بيانات المستخدم؟");
   if(con){
-    this.userService.DeleteUserHistory(this.selectedUserID).subscribe(
-      data=>{ },
+    this.userService.deleteUserHistory(this.selectedUserID).subscribe(
+      data=>{
+        this.getUsers();
+      },
       error=>{}
     )
   }
 }
 updateUser(ele){
   this.selectedUserID=ele.currentTarget.id;
+  this.updateFlag=true;
 
+}
+closeUpdateComponent(){
+  this.updateFlag=false;
+  this.getUsers();
 }
 detailsUser(ele){
+  this.updateFlag=false;
   this.selectedUserID=ele.currentTarget.id;
-
+}
+addNewUser(){
+}
 }
 
-
-}

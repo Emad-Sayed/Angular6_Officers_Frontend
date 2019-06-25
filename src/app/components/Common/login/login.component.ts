@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +12,7 @@ export class LoginComponent implements OnInit {
   password:string;
   flagLogin:boolean;
   loginErrorNumber:number;
+
   constructor(router_:Router,private loginService:LoginService) {
     this.router=router_;
     this.flagLogin=false;
@@ -31,8 +31,9 @@ export class LoginComponent implements OnInit {
         console.log(error)
 
         this.loginErrorNumber++;
-        this.flagLogin=true;},
+        this.flagLogin=true;
+      },
     )
-  }
+ }
 
 }

@@ -18,7 +18,7 @@
 
                 <form  id="contactFrm" name="contactFrm">
                     <input [(ngModel)]="date" style="text-align:right;" type="date" required=""  name="name" class="txt">
-                    <input [(ngModel)]="this.user.ID" (change)="getUser()" style="text-align:center;" type="text" required="" placeholder="كود الظابط  " value="" name="usercode" class="txt">
+                    <input readonly [(ngModel)]="this.user.ID" (change)="getUser()" style="text-align:center;" type="text" required="" placeholder="كود الظابط  " value="" name="usercode" class="txt">
 
                     <input readonly [(ngModel)]="this.user.name" style="text-align:center;" type="text" required="" placeholder="اسم الظابط  " value="" name="name" class="txt">
                     <input readonly style="text-align:center;" type="text" required="" placeholder="رقم النبطشية   " value="1" name="cell_Number" class="txt">
@@ -30,7 +30,7 @@
                        
                 </form>
                 <div class="container  "style="width:500px">
-                  <button *ngIf="searchButtonFlag" (click)="getOfficerCode()" type="button" class="btn btn-primary btn-md" style="margin-top:10px;float:left"><b>اسعتلام عن الكود</b></button>
+                  <button *ngIf="searchButtonFlag" (click)="getOfficerCode()" type="button" class="btn btn-primary btn-md" style="margin-top:10px;float:left"><b>حصول على بيانات ضابط</b></button>
                   <button *ngIf="submitFlag" (click)="addShift()" type="button" class="btn btn-primary btn-md" style="margin-top:10px"><b>إضــــافــــــــــــة</b></button>
                 </div>
             </div>

@@ -9,13 +9,12 @@ import { LoginService } from './services/login.service';
 import { TaskService } from './services/task.service';
 import { DutyService } from './services/duty.service';
 import { UserService } from './services/user.service';
-import { SearshFilterComponent } from './components/FirstOption/searsh-filter/searsh-filter.component';
+import { ReportService } from './services/report.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponent,
-    SearshFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +22,7 @@ import { SearshFilterComponent } from './components/FirstOption/searsh-filter/se
     FormsModule,
     AppRoutingModule
   ],
-  providers: [LoginService,TaskService,DutyService,UserService],
+  providers: [LoginService,TaskService,DutyService,UserService,ReportService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

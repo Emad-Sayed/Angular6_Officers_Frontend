@@ -1,4 +1,12 @@
 
+
+
+
+
+<app-user-details *ngIf="updateFlag" (call_parent_close_me)="closeUpdateComponent()" [userID]="selectedUserID"></app-user-details>
+
+
+
 <div  class="container col-lg-offset-5 " >
     <form>
       <div class="form-group">
@@ -8,11 +16,7 @@
     </form>
 
  </div>
- <div>
-  <div class="alert alert-danger ontainer col-lg-offset-4" style="text-align: center; width: 400px; margin-right: 450px" role="alert">
-    لا يوجد بيانات مسجلة لهذا التاريخ
-  </div>
- </div>
+
 
  
 
@@ -26,7 +30,6 @@
       <tr *ngFor="let data of users">
        <td><button id="{{data.ID}}" (click)="deleteUser($event)" class="btn btn-danger">مــســح</button></td>
        <td><button id="{{data.ID}}" (click)="updateUser($event)" class="btn btn-warning">تعـديـل</button></td>
-       <td><button id="{{data.ID}}" (click)="detailsUser($event)" class="btn btn-success">تفاصيل</button></td>
         <td>{{data.MyType.Type_Name}}</td>
         <td>{{data.MySpecialization.Specialization_Name}}</td>
         <td>{{data.MyDegree.Degree_Name}}</td>
@@ -39,14 +42,15 @@
         <tr>
             <th scope="col">مسح</th>
             <th scope="col">تعديل</th>
-            <th scope="col">تفاصيل</th>
             <th scope="col">الصلاحية</th>
             <th scope="col">التخصص</th>
             <th scope="col">الدرجة</th>
             <th scope="col">الرتبة</th>
             <th scope="col">الاسم</th>
-          <th scope="col">كود المستخدم</th>
-
+            <th scope="col">
+              <a (click)="addNewUser()" class="fa fa-plus" style="padding: 10px; font-size:23px;color:black"></a>
+              <div ><p style="font-weight: bold">  كود الضابط   </p></div>
+             </th>
         </tr>
       </thead>
   </table>

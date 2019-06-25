@@ -1,0 +1,361 @@
+
+
+
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+<div class="container  col-lg-offset-5">
+        <input (change)="newDate()" [(ngModel)]="dateString" type="date">
+</div>
+<div style="clear: both"></div>
+
+<div style="font-size: 25px;margin-left: 600px" > <strong>{{this.day}}/{{this.month}}/{{this.year}}  نوبتجية اطباء المجمع الطبي   </strong></div>
+<div style="clear: both"></div>
+<div class="row">
+    <div class="col-xs-6">
+        <table class="table">
+              <tbody>
+                  <tr *ngFor="let data of batnaShifts">
+                      <td>{{data.User_.MySpecialization.Specialization_Name}}</td>
+                      <td>{{data.User_.MyDegree.Degree_Name}}</td>
+                      <td>{{data.User_.name}}</td>
+                      <td>{{data.User_.MyRank.Rank_Name}}</td>
+                      <td>{{data.DutyType_.DutyType_Name}}</td>
+                  </tr>              
+
+                </tbody>
+                <thead>
+
+                    <tr>
+                        <th style="font-size: 15px" >التخصص</th>
+                        <th style="font-size: 15px">المؤهل</th>
+                        <th style="font-size: 15px">الاسم </th>
+                        <th style="font-size: 15px">الرتبة</th>
+                        <th style="font-size: 15px">مكان الخدمة</th>
+                    </tr>
+                    <tr>
+                            <th style="text-align: center;font-size: 20px" colspan="5">الــــبـــــاطــــــنــــــة</th>
+                        </tr>
+                  </thead>
+        </table>
+        <div *ngIf="batnaSpinner" style="margin-left: 310px" class="col-xs-3">
+                <div class="spinner-border text-success " role="status"></div>
+        </div>
+
+    </div>
+
+
+
+    <div class="col-xs-6">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let data of est2balShifts">
+                    <td>{{data.User_.MySpecialization.Specialization_Name}}</td>
+                    <td>{{data.User_.MyDegree.Degree_Name}}</td>
+                    <td>{{data.User_.name}}</td>
+                    <td>{{data.User_.MyRank.Rank_Name}}</td>
+                    <td>{{data.DutyType_.DutyType_Name}}</td>
+                </tr>   
+              </tbody>
+              <thead>
+ 
+                  <tr>
+                    <th style="font-size: 15px" >التخصص</th>
+                    <th style="font-size: 15px">المؤهل</th>
+                    <th style="font-size: 15px">الاسم </th>
+                    <th style="font-size: 15px">الرتبة</th>
+                    <th style="font-size: 15px">مكان الخدمة</th>
+                  </tr>
+                  <tr>
+                        <th style="text-align: center;font-size: 20px" colspan="5">الاســــتــــقــــبــــــال</th>
+                    </tr>
+                </thead>
+              <div *ngIf="est2balSpinner"  class="col-xs-3">
+                        <div class="spinner-border text-success " role="status"></div>
+                </div>
+      </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-xs-6">
+        <table class="table">
+              <tbody>
+                  <tr *ngFor="let data of albShifts">
+                      <td>{{data.User_.MySpecialization.Specialization_Name}}</td>
+                      <td>{{data.User_.MyDegree.Degree_Name}}</td>
+                      <td>{{data.User_.name}}</td>
+                      <td>{{data.User_.MyRank.Rank_Name}}</td>
+                      <td>{{data.DutyType_.DutyType_Name}}</td>
+                  </tr>              
+
+                </tbody>
+                <thead>
+
+                    <tr>
+                        <th style="font-size: 15px" >التخصص</th>
+                        <th style="font-size: 15px">المؤهل</th>
+                        <th style="font-size: 15px">الاسم </th>
+                        <th style="font-size: 15px">الرتبة</th>
+                        <th style="font-size: 15px">مكان الخدمة</th>
+                    </tr>
+                    <tr>
+                            <th style="text-align: center;font-size: 20px" colspan="5">الــــــــــقـــــــلـــــــــب</th>
+                        </tr>
+                  </thead>
+        </table>
+        <div *ngIf="albSpinner" style="margin-left: 310px" class="col-xs-3">
+                <div class="spinner-border text-success " role="status"></div>
+        </div>
+
+    </div>
+
+
+
+    <div class="col-xs-6">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let data of grahaShifts">
+                    <td>{{data.User_.MySpecialization.Specialization_Name}}</td>
+                    <td>{{data.User_.MyDegree.Degree_Name}}</td>
+                    <td>{{data.User_.name}}</td>
+                    <td>{{data.User_.MyRank.Rank_Name}}</td>
+                    <td>{{data.DutyType_.DutyType_Name}}</td>
+                </tr>   
+              </tbody>
+              <thead>
+
+                  <tr>
+                    <th style="font-size: 15px" >التخصص</th>
+                    <th style="font-size: 15px">المؤهل</th>
+                    <th style="font-size: 15px">الاسم </th>
+                    <th style="font-size: 15px">الرتبة</th>
+                    <th style="font-size: 15px">مكان الخدمة</th>
+                  </tr>
+                  <tr>
+                            <th style="text-align: center;font-size: 20px" colspan="5">الــــــجــــــراحــــــــــة</th>
+                  </tr>
+
+                </thead>
+               <div *ngIf="grahaSpinner"  class="col-xs-3">
+                        <div class="spinner-border text-success " role="status"></div>
+                </div>
+      </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="row">
+        <div class="col-xs-6">
+            <table class="table">
+                  <tbody>
+                      <tr *ngFor="let data of eyonShifts">
+                          <td>{{data.User_.MySpecialization.Specialization_Name}}</td>
+                          <td>{{data.User_.MyDegree.Degree_Name}}</td>
+                          <td>{{data.User_.name}}</td>
+                          <td>{{data.User_.MyRank.Rank_Name}}</td>
+                          <td>{{data.DutyType_.DutyType_Name}}</td>
+                      </tr>              
+    
+                    </tbody>
+                    <thead>
+
+                        <tr>
+                            <th style="font-size: 15px" >التخصص</th>
+                            <th style="font-size: 15px">المؤهل</th>
+                            <th style="font-size: 15px">الاسم </th>
+                            <th style="font-size: 15px">الرتبة</th>
+                            <th style="font-size: 15px">مكان الخدمة</th>
+                        </tr>
+                        <tr>
+                                <th style="text-align: center;font-size: 20px" colspan="5">الـعـيـون التـخــصـصـي</th>
+                            </tr>
+                      </thead>
+            </table>
+            <div *ngIf="eyonSpinner" style="margin-left: 310px" class="col-xs-3">
+                    <div class="spinner-border text-success " role="status"></div>
+            </div>
+    
+        </div>
+    
+    
+    
+        <div class="col-xs-6">
+            <table class="table">
+                <tbody>
+                    <tr *ngFor="let data of kelaShifts">
+                        <td>{{data.User_.MySpecialization.Specialization_Name}}</td>
+                        <td>{{data.User_.MyDegree.Degree_Name}}</td>
+                        <td>{{data.User_.name}}</td>
+                        <td>{{data.User_.MyRank.Rank_Name}}</td>
+                        <td>{{data.DutyType_.DutyType_Name}}</td>
+                    </tr>   
+                  </tbody>
+                  <thead>
+                      <tr>
+                        <th style="font-size: 15px" >التخصص</th>
+                        <th style="font-size: 15px">المؤهل</th>
+                        <th style="font-size: 15px">الاسم </th>
+                        <th style="font-size: 15px">الرتبة</th>
+                        <th style="font-size: 15px">مكان الخدمة</th>
+                      </tr>
+                      <tr>
+                            <th style="text-align: center;font-size: 20px" colspan="5">الـــــــكـــــــــلــــــــــي</th>
+                        </tr>
+                    </thead>
+                    <div *ngIf="kelaSpinner"  class="col-xs-3">
+                            <div class="spinner-border text-success " role="status"></div>
+                    </div>
+          </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="row">
+            <div class="col-xs-6">
+                <table class="table">
+                      <tbody>
+                          <tr *ngFor="let data of asnanShifts">
+                              <td>{{data.User_.MySpecialization.Specialization_Name}}</td>
+                              <td>{{data.User_.MyDegree.Degree_Name}}</td>
+                              <td>{{data.User_.name}}</td>
+                              <td>{{data.User_.MyRank.Rank_Name}}</td>
+                              <td>{{data.DutyType_.DutyType_Name}}</td>
+                          </tr>              
+        
+                        </tbody>
+                        <thead>
+
+                            <tr>
+                                <th style="font-size: 15px" >التخصص</th>
+                                <th style="font-size: 15px">المؤهل</th>
+                                <th style="font-size: 15px">الاسم </th>
+                                <th style="font-size: 15px">الرتبة</th>
+                                <th style="font-size: 15px">مكان الخدمة</th>
+                            </tr>
+                            <tr>
+                                    <th style="text-align: center;font-size: 20px" colspan="5">الاسـنـان التـخــصـصـي</th>
+                                </tr>
+                          </thead>
+                </table>
+                <div *ngIf="asnanSpinner" style="margin-left: 310px" class="col-xs-3">
+                        <div class="spinner-border text-success " role="status"></div>
+                </div>
+        
+            </div>
+        
+        
+        
+            <div class="col-xs-6">
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor="let data of sadrShifts">
+                            <td>{{data.User_.MySpecialization.Specialization_Name}}</td>
+                            <td>{{data.User_.MyDegree.Degree_Name}}</td>
+                            <td>{{data.User_.name}}</td>
+                            <td>{{data.User_.MyRank.Rank_Name}}</td>
+                            <td>{{data.DutyType_.DutyType_Name}}</td>
+                        </tr>   
+                      </tbody>
+                      <thead>
+
+                          <tr>
+                            <th style="font-size: 15px" >التخصص</th>
+                            <th style="font-size: 15px">المؤهل</th>
+                            <th style="font-size: 15px">الاسم </th>
+                            <th style="font-size: 15px">الرتبة</th>
+                            <th style="font-size: 15px">مكان الخدمة</th>
+                          </tr>
+                          <tr>
+                                <th style="text-align: center;font-size: 20px" colspan="5">الـــــــــــصــــــــــــــــدر</th>
+                            </tr>
+                        </thead>
+                        <div *ngIf="sadrSpinner"class="col-xs-3">
+                                <div class="spinner-border text-success " role="status"></div>
+                        </div>
+              </table>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="row">
+                <div class="col-xs-6">
+                    <table class="table">
+                          <tbody>
+                              <tr *ngFor="let data of aksamShifts">
+                                  <td>{{data.User_.MySpecialization.Specialization_Name}}</td>
+                                  <td>{{data.User_.MyDegree.Degree_Name}}</td>
+                                  <td>{{data.User_.name}}</td>
+                                  <td>{{data.User_.MyRank.Rank_Name}}</td>
+                                  <td>{{data.DutyType_.DutyType_Name}}</td>
+                              </tr>              
+            
+                            </tbody>
+                            <thead>
+    
+                                <tr>
+                                    <th style="font-size: 15px" >التخصص</th>
+                                    <th style="font-size: 15px">المؤهل</th>
+                                    <th style="font-size: 15px">الاسم </th>
+                                    <th style="font-size: 15px">الرتبة</th>
+                                    <th style="font-size: 15px">مكان الخدمة</th>
+                                </tr>
+                                <tr>
+                                        <th style="text-align: center;font-size: 20px" colspan="5"> الاقــســام الــمــســاعــدة</th>
+                                    </tr>
+                              </thead>
+                    </table>
+                    <div *ngIf="aksamSpinner" style="margin-left: 310px" class="col-xs-3">
+                            <div class="spinner-border text-success " role="status"></div>
+                    </div>
+            
+                </div>
+            
+            
+            
+                <div class="col-xs-6" style="font-style:inherit ; background-color: lightgrey">
+                 <div class="row" style="margin: auto;width: 80%;">
+                     <h2> طبعت بواسطة {{LogedUsed.name}}</h2>          
+                 </div>
+                 <div class="row" style="margin: auto;width: 40%;">
+                        <h2>{{this.day}}/{{this.month}}/{{this.year}}  يوم </h2>          
+                    </div>
+                </div>
+            </div>

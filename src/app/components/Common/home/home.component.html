@@ -17,13 +17,20 @@
 <button routerLink="/home/users" type="button" class="btn btn-success ribbon"><b>استعــــلام عـن المـسـتـــخدمـيـن</b></button>
 
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-<button type="button" class="btn btn-primary ribbon">3 اوبشن</button>
+<button (click)="showCRUDS_Buttons()" type="button" class="btn btn-primary ribbon"> <b> الاضــــــــافــــــة والـــــتــــعــــديـــل فـــي الـــبـــيـــانـــات الاســـاســـيــة </b></button>
 
-<!-- Contextual button for informational alert messages -->
-<button type="button" class="btn btn-info ribbon">4 اوبشن</button>
-
+<div *ngIf="CRUD_Flag" class="row">
+    <div class="col-md-2"></div>
+   <div class="btn-group btn-group-sm col-md-8" >
+    <button type="button" class="btn-info ribbon"><b> High </b></button>
+    <button type="button" class=" btn-info ribbon"><b>Middle</b></button>
+    <button type="button" class=" btn-info ribbon"><b>Right</b></button>
+    <button type="button" class=" btn-info ribbon"><b>Right</b></button>
+   </div>
+    <div class="col-md-2"></div>
+ </div>
 <!-- Indicates caution should be taken with this action -->
-<button type="button" class="btn btn-warning ribbon">5 اوبشن</button>
+<button routerLink="/batna_alb_report"   type="button" class="btn btn-warning ribbon"><b>الــتــــــقــــــريــــــر الـــيـــومـــــــــي</b></button>
 
 
 

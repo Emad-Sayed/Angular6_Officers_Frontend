@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,8 @@ export class LoginService {
     if(window.localStorage.getItem('user')===null)
     return false;
     return true;
+  }
+  getLoggedUser(){
+    return JSON.parse(window.localStorage.getItem('user'));
   }
 }
