@@ -1,7 +1,4 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+
 
 <div class="container">
 	<div class="row">
@@ -25,7 +22,7 @@
 
 
                     <select [(ngModel)]="selectedDutyName" (click)="getSelectedOption($event)" style="width: 350px" id="singleSelect" >
-                      <option *ngFor="let data of Dutys" value="{{data.dutyType.ID}}">{{data.dutyType.DutyType_Name}}</option>
+                      <option *ngFor="let data of Dutys" value="{{data.ID}}">{{data.DutyType_Name}}</option>
                       </select>           
                        
                 </form>

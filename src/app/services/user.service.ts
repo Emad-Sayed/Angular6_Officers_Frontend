@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Rank } from '../models/Rank';
 import { Specialization } from '../models/Specialization';
 import { Degree } from '../models/Degree';
+import { Hospital } from '../models/Hospital';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class UserService {
     let URL=this.mainURL+"/post_edituserinfo";
     return this.http.post(URL,user);
   }
+  addUser(user:User){
+    let URL=this.mainURL+"/Post_AddUser";
+    return this.http.post(URL,user);
+  }
   getUsersByName(name:string):Observable<Array<User>>{
     let URL=this.mainURL+"/getUsersByName?name="+name;
     return this.http.get<Array<User>>(URL);
@@ -42,5 +47,9 @@ export class UserService {
   getDegree():Observable<Array<Degree>>{
     let URL=this.mainURL+"/getdegrees";
     return this.http.get<Array<Degree>>(URL);
+  }
+  getHospitals():Observable<Array<Hospital>>{
+    let URL=this.mainURL+"/GetHospitals";
+    return this.http.get<Array<Hospital>>(URL);
   }
 }

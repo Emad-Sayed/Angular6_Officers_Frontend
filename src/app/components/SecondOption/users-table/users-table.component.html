@@ -4,7 +4,7 @@
 
 
 <app-user-details *ngIf="updateFlag" (call_parent_close_me)="closeUpdateComponent()" [userID]="selectedUserID"></app-user-details>
-
+<app-add-user *ngIf="newUserFlag" (call_parent_close_me)="closeAddComponent()"></app-add-user>
 
 
 <div  class="container col-lg-offset-5 " >

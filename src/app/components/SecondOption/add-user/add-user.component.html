@@ -7,7 +7,7 @@
     <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <div class="panel-title">تــعــديــل بــيــانــات مــســتــخــدم</div>
+                <div class="panel-title"> إضافــــــــــــة  مــســتــخــدم جـــــديـــــد</div>
             </div>  
             <div class="panel-body" >
               
@@ -22,11 +22,20 @@
           
                         <div id="div_id_username" class="form-group required">
                             <div class="controls col-md-8 ">
-                                <input  [(ngModel)]="user.name" class="input-md  textinput textInput form-control" id="id_username" maxlength="30" name="username" placeholder="اسم المستخدم" style="margin-bottom: 10px" type="text" />
+                                <input  [(ngModel)]="user.name" class="input-md  textinput textInput form-control" maxlength="30" name="username" placeholder="اسم المستخدم" style="margin-bottom: 10px;text-align: center" type="text" />
                             </div>
                             <label for="id_username" class="control-label col-md-4  requiredField"> اســـــم الــــمــــســــتــــخــــدم<span class="asteriskField">*</span> </label>
 
                         </div>
+
+                        <div id="div_id_username" class="form-group required">
+                          <div class="controls col-md-8 ">
+                              <input  [(ngModel)]="user.username" class="input-md  textinput textInput form-control"  maxlength="30" name="name" placeholder=" اسم تسجيل الدخول" style="margin-bottom: 10px;text-align: center" type="text" />
+                          </div>
+                          <label for="id_username" class="control-label col-md-4  requiredField"> اســـــم تــــسـجــيــل الدخـــول<span class="asteriskField">*</span> </label>
+
+                      </div>
+
                         <div id="div_id_catagory" class="form-group required">
                           <div class="controls col-md-8 "> 
                             <select  [(ngModel)]="selectedRank" (click)="getSelectedRank($event)" style="width: 330px" id="singleSelect" name="1">
@@ -39,28 +48,37 @@
                       
                       <div id="div_id_catagory" class="form-group required">
                         <div class="controls col-md-8 "> 
-                          <select  [(ngModel)]="selectedDegree" (click)="getSelectedDegree($event)" style="width: 330px" id="singleSelect" name="2" >
+                          <select  [(ngModel)]="selectedDegree" (click)="getSelectedDegree($event)" style="width: 330px" id="singleSelect" name="2">
                             <option *ngFor="let data of Degrees" value="{{data.ID}}">{{data.Degree_Name}}</option>
                           </select>      
                         </div>
                         <label for="id_catagory" class="control-label col-md-4  requiredField"> الـــــدرجــــــة الـــعـــلــمـــيــة<span class="asteriskField">*</span> </label>
 
                     </div>      
-    
                         <div id="div_id_catagory" class="form-group required">
                             <div class="controls col-md-8 "> 
-                              <select  [(ngModel)]="selectedSpetialization" (click)="getSelectedSpetialization($event)" style="width: 330px" id="singleSelect" name="3" >
+                              <select  [(ngModel)]="selectedSpetialization" (click)="getSelectedSpetialization($event)" style="width: 330px" id="singleSelect" name="3">
                                 <option *ngFor="let data of Spetializations" value="{{data.ID}}">{{data.Specialization_Name}}</option>
                               </select>      
                             </div>
                             <label for="id_catagory" class="control-label col-md-4  requiredField"> الـــــــتــــــخـــــــــصـــــــــص<span class="asteriskField">*</span> </label>
+                        </div>        
+                        
+                        <div id="div_id_catagory" class="form-group required">
+                            <div class="controls col-md-8 "> 
+                              <select  [(ngModel)]="selectedHospital" (click)="getSelectedHospital($event)" style="width: 330px" id="singleSelect" name="4" >
+                                <option *ngFor="let data of Hospitals" value="{{data.ID}}">{{data.Hospital_Name}}</option>
+                              </select>      
+                            </div>
+                            <label for="id_catagory" class="control-label col-md-4  requiredField"> الــــمــــســـــتـــــشـــــفـــــــي<span class="asteriskField">*</span> </label>
+                        </div>     
 
-                        </div>         
+
                     </form>
 
                 </form>
                 <div class="container  "style="margin-left:180px;padding:10px ">
-                  <button (click)="updateInfo()" type="button" class="btn btn-primary btn-md"><b>تــعــديــل</b></button>
+                  <button (click)="addNewUser()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
                 </div>
             </div>
         </div>

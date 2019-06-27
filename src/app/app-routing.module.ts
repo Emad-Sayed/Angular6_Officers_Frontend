@@ -12,6 +12,7 @@ import { UsersTableComponent } from './components/SecondOption/users-table/users
 import { SearshFilterComponent } from './components/FirstOption/searsh-filter/searsh-filter.component';
 import { UserDetailsComponent } from './components/SecondOption/user-details/user-details.component';
 import { BatnaAlbReportComponent } from './components/ThirdOption/batna-alb-report/batna-alb-report.component';
+import { HospitalsDutiesComponent } from './components/FourthOption/hospitals-duties/hospitals-duties.component';
 
 const routes: Routes = [
   { path: '', component:LoginComponent  },
@@ -24,6 +25,10 @@ const routes: Routes = [
   },
   {
     path:'users',component:UsersTableComponent
+  },
+
+  {
+    path:'hospitals_duties',component:HospitalsDutiesComponent
   },
 
   ] },
@@ -41,4 +46,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponent=[LoginComponent,NavbarComponent,HomeComponent,MyfooterComponent,
   TasksComponent,ShiftFormComponent,ShiftDetailsComponent,FirstShiftComponent,UsersTableComponent,
-SearshFilterComponent,UserDetailsComponent,BatnaAlbReportComponent]
+SearshFilterComponent,UserDetailsComponent,BatnaAlbReportComponent,HospitalsDutiesComponent,]

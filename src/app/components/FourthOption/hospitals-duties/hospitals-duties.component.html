@@ -1,0 +1,99 @@
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+
+<app-new-duty *ngIf="addEditDutyFlag" (call_parent_close_me)="closeAddDutyComponent()" [duty]="selectedDuty" [addOrEditDutyFlag]="addOrEditDutyFlag"></app-new-duty>
+<app-new-hospital *ngIf="addEditHospitalFlag" (call_parent_close_me)="closeAddHospitalComponent()" [hospital]="selectedHospital" [addOrEditHospitalFlag]="addOrEditHospitalFlag"></app-new-hospital>
+<div class="row" >
+    <div  class="col-xs-4" >
+        <div class="container">
+            <div style="width: 1600px" class="row text-center">
+
+            <div class="col-md-6" >
+                <div class="pricing-table">
+                    <div class="panel panel-primary" style="border: none;">
+                        <div class="controle-header panel-heading panel-heading-landing">
+                            <h1 class="panel-title panel-title-landing">
+                                 المستشفيات
+                            </h1>
+                            
+                        </div>
+                        <div class="controle-panel-heading panel-heading panel-heading-landing-box">
+                          عرض المستشفيات
+                          </div>
+                        <div class="panel-body panel-body-landing">
+
+
+                            <table class="table" >
+                                
+                                <tr *ngFor="let data of hospitals">
+                                    <td width="50px"><i class="fa fa-check"></i></td>
+                                    <td><button (click)="editHospital($event)" class="btn btn-warning" id="{{data.ID}}">تعديل</button></td>
+                                    <td>{{data.Hospital_Name}}</td>
+                                </tr>
+      
+                            </table>
+                        </div>
+                        <div  class="panel-footer panel-footer-landing">
+                            
+                            <button (click)="addNewHospital()" class="btn btn-success btn-lg">اضافة مستشفي</button> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="container">
+                <div class="row text-center">
+        
+                    <div class="col-md-12" >
+                        <div class="pricing-table">
+                            <div class="panel panel-primary" style="border: none;">
+                                <div class="controle-header panel-heading panel-heading-landing">
+                                    <h1 class="panel-title panel-title-landing">
+                                         الخدمات
+                                    </h1>
+                                </div>
+                                <div class="controle-panel-heading panel-heading panel-heading-landing-box">
+                                    عرض الخدمات
+                                </div>
+                                <div class="panel-body panel-body-landing">
+        
+        
+                                    <table class="table">
+                                        <tr *ngFor="let data of duties; index as i">
+                                            <td width="50px"><i class="fa fa-check"></i></td>
+                                            <td><button class="btn btn-warning" (click)="editDuty($event)" id="{{data.ID}}">تعديل</button></td>
+                                            <td>{{data.DutyType_Name}}</td>
+                                            <td>{{data.hospital.Hospital_Name}}</td>
+
+                                        </tr>
+                                    </table>
+                                </div>
+   
+                                <div class="panel-footer panel-footer-landing">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                          <li [ngClass]="{'disabled':!previousDutyflag}" (click)="previousDutyPage()" class="page-item"><a class="page-link">السابق</a></li>
+                                          
+                                          <li [ngClass]="{'disabled':!nextDutyflag}" (click)="nextDutyPage()" class="page-item"><a class="page-link" >التالي</a></li>
+                                        </ul>
+                                      </nav>
+                                    <button (click)="addNewDuty()" class="btn btn-success btn-lg">اضافة خدمة</button> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            </div>
+        
+
+  </div>
+    

@@ -10,11 +10,20 @@ import { TaskService } from './services/task.service';
 import { DutyService } from './services/duty.service';
 import { UserService } from './services/user.service';
 import { ReportService } from './services/report.service';
+import { AddUserComponent } from './components/SecondOption/add-user/add-user.component';
+import { NewDutyComponent } from './components/FourthOption/new-duty/new-duty.component';
+import { HospitalsDutiesComponent } from './components/FourthOption/hospitals-duties/hospitals-duties.component';
+import { NewHospitalComponent } from './components/FourthOption/new-hospital/new-hospital.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponent,
+    AddUserComponent,
+    NewDutyComponent,
+    HospitalsDutiesComponent,
+    NewHospitalComponent,
+
   ],
   imports: [
     BrowserModule,

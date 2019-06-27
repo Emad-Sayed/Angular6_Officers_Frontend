@@ -13,9 +13,11 @@ export class UsersTableComponent implements OnInit {
   spinnerTable:boolean;
   users:Array<User>;
   updateFlag:boolean;
+  newUserFlag:boolean;
   constructor(private userService:UserService) {
     this.spinnerTable=true;
     this.updateFlag=false;
+    this.newUserFlag=false;
     this.getUsers();
    }
 
@@ -54,17 +56,18 @@ deleteUser(ele){
 updateUser(ele){
   this.selectedUserID=ele.currentTarget.id;
   this.updateFlag=true;
-
 }
 closeUpdateComponent(){
   this.updateFlag=false;
   this.getUsers();
 }
-detailsUser(ele){
-  this.updateFlag=false;
-  this.selectedUserID=ele.currentTarget.id;
+closeAddComponent(){
+  this.newUserFlag=false;
+  this.getUsers();
 }
 addNewUser(){
+  this.updateFlag=false;
+  this.newUserFlag=true;
 }
 }
 
