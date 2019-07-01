@@ -9,7 +9,7 @@
         <div style="text-align: center" *ngIf="alertFlag" class="alert alert-danger" role="alert">
            {{alertMessage}}
           </div>
-                <h4 class="heading"><strong>أضــــافة </strong> نبــــــــطشية <span></span></h4>
+                <h4 class="heading"><strong>أضــــافة </strong> نـــوبـــتـــجـــيـــة <span></span></h4>
                 <div class="form">
                 <form  id="contactFrm" name="contactFrm">
                     <input [(ngModel)]="date" style="text-align:right;" type="date" required=""  name="name" class="txt">
@@ -23,7 +23,7 @@
                        
                 </form>
                 <div class="container  "style="margin-left:180px;padding:10px ">
-                  <button (click)="addShift()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
+                  <button *ngIf="addShiftButtonFlag" (click)="addShift()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
                 </div>
             </div>
             </div>

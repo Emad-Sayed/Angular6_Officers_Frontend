@@ -27,6 +27,7 @@ export class FirstShiftComponent implements OnInit {
   submitFlag: boolean=false;
   searchNameFlag=false;
   searchButtonFlag=true;
+
   constructor(private dutyService:DutyService,private taskService:TaskService,private userService:UserService) {
     this.user=new User();
     this.newShift=new Shift();
@@ -57,6 +58,7 @@ export class FirstShiftComponent implements OnInit {
     this.searchNameFlag=true;
   }
   addShift(){
+    this.submitFlag=false;
     if(this.date!=null&&this.selectedDutyID!=0){
     this.newShift.User_=this.user;
     this.newShift.DutyNum=1;
@@ -83,7 +85,6 @@ export class FirstShiftComponent implements OnInit {
       this.alertMessage="  من فضلك ادخل التاريخ و نوع النبطشية !";
       this.alertFlag=true;
     }
-
   }
   call_parent(){
     this.updateShiftParent.next();

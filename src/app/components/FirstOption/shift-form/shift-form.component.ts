@@ -34,8 +34,10 @@ export class ShiftFormComponent implements OnInit {
   newShift:Shift;
   alertFlag:boolean=false;
   alertMessage: string;
+  addShiftButtonFlag:boolean;
   constructor(private dutyService:DutyService,private taskService:TaskService, cd:ChangeDetectorRef) {
     this.newShift=new Shift();
+    this.addShiftButtonFlag=true;
    }
 
   ngOnInit() {
@@ -55,6 +57,7 @@ export class ShiftFormComponent implements OnInit {
     this.selectedDutyID=ele.target.value;
   }
   addShift(){
+    this.addShiftButtonFlag=false;
     if(this.date!=null&&this.selectedDutyID!=0){
     this.newShift.User_=this.user;
     this.newShift.DutyNum=this.cell_Number;
@@ -81,6 +84,7 @@ export class ShiftFormComponent implements OnInit {
     this.alertMessage=" من فضلك ادخل التاريخ ونوع النبطشية";
     this.alertFlag=true;
   }
+  this.addShiftButtonFlag=true;
   this.selectedDutyID=0;
   }
   call_parent(){

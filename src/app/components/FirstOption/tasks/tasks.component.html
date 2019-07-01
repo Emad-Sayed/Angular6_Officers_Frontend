@@ -1,9 +1,12 @@
 
 
-<div *ngIf="formFlag" class="container  "style="margin-left:580px;width:600px" >
+<div *ngIf="formFlag" class="container  " >
+    <div class="row">
+        <div class="col-md-6 col col-md-offset-3">
+          
   <form>
     <div class="form-group">
-      <div *ngIf="alertFlag" class="alert alert-danger" style="text-align: center; width: 400px" role="alert">
+      <div style="text-align: center" *ngIf="alertFlag" class="alert alert-danger"role="alert">
         لا يوجد بيانات مسجلة لهذا التاريخ
       </div>
 
@@ -13,12 +16,17 @@
   
 
   </form>
+</div>
+ </div>
+<div class="row">
+    <div *ngIf="formFlag"  class="col-md-2 col-md-offset-4" style="padding: 10px" >
+        <button style="width: 200px; " (click)="updateShiftList()" type="button" class="btn btn-md btn-primary"><b> جدول شهر {{this.month}} سنة {{this.year}} </b></button>
+      </div>
 
 </div>
+</div>
 
-<div *ngIf="formFlag"  class="container  "style="margin-left:700px;width:800px;padding-top:10px">
-    <button (click)="updateShiftList()" type="button" class="btn btn-primary"><b> جدول شهر {{this.month}} سنة {{this.year}} </b></button>
-  </div>
+
 
 
 <div *ngIf="searhFlag"  style="margin-right: 50px; width: 350px;text-align: center"class="container  col-lg-offset-5">
@@ -27,9 +35,6 @@
 </div>
 
 
-<div class="container  "style="margin-left:730px;width:200px;   padding-bottom: 50px;">
-  
-  </div>
   <div  *ngIf="this.shiftFormFrag" class="container  col-lg-offset-4">
     <app-shift-form (updateShiftParent)="updateShiftList()" (closeComponent)="closeFormShiftComponent()" [month]="month" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user"></app-shift-form>
 

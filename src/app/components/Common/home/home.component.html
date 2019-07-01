@@ -9,19 +9,19 @@
     <div class="row">
     
     <div class="col-md-6">       <!-- Standard button -->
-<button  routerLink="/home/tasks" type="button" class="btn btn-default ribbon"><b>استعــــلام عـن جـدول الـنـبـطـشـيـات</b></button>
+<button  routerLink="/home/tasks" type="button" class="btn btn-default ribbon"><b>استعــــلام عـن جـدول الــنــوبــتــجــيــات</b></button>
 
 <!-- Indicates a successful or positive action -->
-<button routerLink="/home/users" type="button" class="btn btn-success ribbon"><b>استعــــلام عـن المـسـتـــخدمـيـن</b></button>
+<button [disabled]="!isAdmin" routerLink="/home/users" type="button" class="btn btn-success ribbon"><b>استعــــلام عـن المـسـتـــخدمـيـن</b></button>
 
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-<button (click)="showCRUDS_Buttons()" type="button" class="btn btn-primary ribbon"> <b> الاضــــــــافــــــة والـــــتــــعــــديـــل فـــي الـــبـــيـــانـــات الاســـاســـيــة </b></button>
+<button [disabled]="!isAdmin" (click)="showCRUDS_Buttons()" type="button" class="btn btn-primary ribbon"> <b> الاضــــــــافــــــة والـــــتــــعــــديـــل فـــي الـــبـــيـــانـــات الاســـاســـيــة </b></button>
 
 <div *ngIf="CRUD_Flag" class="row">
     <div class="col-md-2"></div>
    <div class="btn-group btn-group-sm col-md-8" >
-    <button routerLink="/home/hospitals_duties" type="button" class="btn-info ribbon"><b> جدول المستشفيات</b></button>
-    <button routerLink="/home/duties" type="button" class=" btn-info ribbon"><b>جدول الخدمات</b></button>
+    <button routerLink="/home/hospitals_duties" type="button" class="btn-info ribbon"><b>  جـدول المسـتـشـفيات والـخـدمـات</b></button>
+    <button  type="button" class=" btn-info ribbon"><b> خــدمـــات اخــــرى</b></button>
    </div>
     <div class="col-md-2"></div>
  </div>

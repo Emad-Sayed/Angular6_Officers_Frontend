@@ -6,14 +6,19 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class LoginService {
-  mainURL:string ="http://localhost:50135/api/user/checklogin"
+  mainURL:string ="http://localhost:50135/api/user/"
   header:HttpHeaders;
   constructor(private http:HttpClient) { 
     this.header=new HttpHeaders();
     this.header.append('Content-type',"application/json")
   }
   LoginCheck(username:string,password:string){
-    return this.http.post(this.mainURL,{'username':username,'password':password},{headers:this.header});
+    let URL=this.mainURL+"checklogin"
+    return this.http.post(URL,{'username':username,'password':password},{headers:this.header});
+  }
+  changePassword(user:User){
+    let URL=this.mainURL+"changepassword"
+    return this.http.post(URL,user);
   }
   isExist(){
     if(window.localStorage.getItem('user')===null)

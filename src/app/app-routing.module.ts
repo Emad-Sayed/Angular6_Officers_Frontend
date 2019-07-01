@@ -13,7 +13,10 @@ import { SearshFilterComponent } from './components/FirstOption/searsh-filter/se
 import { UserDetailsComponent } from './components/SecondOption/user-details/user-details.component';
 import { BatnaAlbReportComponent } from './components/ThirdOption/batna-alb-report/batna-alb-report.component';
 import { HospitalsDutiesComponent } from './components/FourthOption/hospitals-duties/hospitals-duties.component';
-
+import { NewDutyComponent } from './components/FourthOption/new-duty/new-duty.component';
+import { NewHospitalComponent } from './components/FourthOption/new-hospital/new-hospital.component';
+import { AddUserComponent } from './components/SecondOption/add-user/add-user.component';
+import { ChangePasswordComponent } from './components/Common/change-password/change-password.component';
 const routes: Routes = [
   { path: '', component:LoginComponent  },
   { path: 'home', component:NavbarComponent,children:[
@@ -30,8 +33,9 @@ const routes: Routes = [
   {
     path:'hospitals_duties',component:HospitalsDutiesComponent
   },
-
-  ] },
+  {path:'change_password',component:ChangePasswordComponent}
+  ] 
+},
   {path:'shift',component:ShiftFormComponent},
   {path:'batna_alb_report',component:BatnaAlbReportComponent},
 
@@ -46,4 +50,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponent=[LoginComponent,NavbarComponent,HomeComponent,MyfooterComponent,
   TasksComponent,ShiftFormComponent,ShiftDetailsComponent,FirstShiftComponent,UsersTableComponent,
-SearshFilterComponent,UserDetailsComponent,BatnaAlbReportComponent,HospitalsDutiesComponent,]
+SearshFilterComponent,UserDetailsComponent,BatnaAlbReportComponent,HospitalsDutiesComponent,
+NewDutyComponent,NewHospitalComponent,AddUserComponent,ChangePasswordComponent]

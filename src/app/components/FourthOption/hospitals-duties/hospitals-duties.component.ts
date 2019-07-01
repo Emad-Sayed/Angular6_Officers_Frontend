@@ -3,6 +3,9 @@ import { Hospital } from 'src/app/models/Hospital';
 import { DutyType } from 'src/app/models/DutyType';
 import { UserService } from 'src/app/services/user.service';
 import { DutyService } from 'src/app/services/duty.service';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-hospitals-duties',
@@ -11,6 +14,8 @@ import { DutyService } from 'src/app/services/duty.service';
 })
 export class HospitalsDutiesComponent implements OnInit {
 
+  router:Router;
+  LoggedUser:User;
   selectedDuty:DutyType;
   selectedDutyID:number;
 
@@ -29,7 +34,18 @@ export class HospitalsDutiesComponent implements OnInit {
 
   addEditHospitalFlag:boolean;
   addOrEditHospitalFlag:boolean;
-  constructor(private userService:UserService,private dutysService:DutyService) {
+
+
+  hospitalSpinner:boolean;
+  dutiesSpinner:boolean;
+  constructor(router_:Router,private userService:UserService,private dutysService:DutyService,private loginService:LoginService) {
+    this.router=router_;
+    this.LoggedUser=loginService.getLoggedUser();
+    if(this.LoggedUser.MyType.Type_Name!="ادمن"){
+      this.router.navigate(["/home"]);
+    }
+    this.hospitalSpinner=true;
+    this.dutiesSpinner=true;
     this.selectedDuty=new DutyType();
     this.selectedHospital=new Hospital();
     this.addEditDutyFlag=false;
@@ -44,17 +60,21 @@ export class HospitalsDutiesComponent implements OnInit {
   ngOnInit() {
   }
   getHospitals(){
+    this.hospitalSpinner=true;
     this.userService.getHospitals().subscribe(
       data=>{
           this.hospitals=data;
+          this.hospitalSpinner=false;
       }
     )
   }
   getDuties(){
+    this.dutiesSpinner=true;
     this.dutysService.getAllDuties(this.current_duty_page_number).subscribe(
       data=>{
         if(data.length>0){
           this.duties=data;
+          this.dutiesSpinner=false;
         }
         else{
           this.nextDutyflag=false;

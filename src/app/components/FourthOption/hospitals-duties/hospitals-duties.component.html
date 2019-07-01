@@ -24,6 +24,7 @@
                           عرض المستشفيات
                           </div>
                         <div class="panel-body panel-body-landing">
+                                <div *ngIf="hospitalSpinner" style="margin-left: 40px"><i class="fa fa-spinner fa-spin" style="font-size: 25px" ></i></div>
 
 
                             <table class="table" >
@@ -63,9 +64,10 @@
                                     عرض الخدمات
                                 </div>
                                 <div class="panel-body panel-body-landing">
-        
+                           <div *ngIf="dutiesSpinner" style="margin-left: 40px"><i class="fa fa-spinner fa-spin" style="font-size: 25px" ></i></div>
         
                                     <table class="table">
+
                                         <tr *ngFor="let data of duties; index as i">
                                             <td width="50px"><i class="fa fa-check"></i></td>
                                             <td><button class="btn btn-warning" (click)="editDuty($event)" id="{{data.ID}}">تعديل</button></td>
@@ -80,11 +82,13 @@
                                     <nav aria-label="Page navigation example">
                                         <ul class="pagination">
                                           <li [ngClass]="{'disabled':!previousDutyflag}" (click)="previousDutyPage()" class="page-item"><a class="page-link">السابق</a></li>
-                                          
                                           <li [ngClass]="{'disabled':!nextDutyflag}" (click)="nextDutyPage()" class="page-item"><a class="page-link" >التالي</a></li>
+                                          <br />
+                                          <br />
+                                          <h4>{{CurrentPageNumber}}</h4>
+                                          <button (click)="addNewDuty()" class="btn btn-success btn-lg">اضافة خدمة</button>
                                         </ul>
-                                      </nav>
-                                    <button (click)="addNewDuty()" class="btn btn-success btn-lg">اضافة خدمة</button> 
+                                      </nav> 
                                 </div>
                             </div>
                         </div>
