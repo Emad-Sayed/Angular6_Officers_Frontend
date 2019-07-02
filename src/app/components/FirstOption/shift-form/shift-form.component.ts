@@ -21,6 +21,8 @@ export class ShiftFormComponent implements OnInit {
   @Input() cell_Number;
   @Input() user:User;
   @Input() month;
+  @Input() year;
+  day:number;
 
 
   @Output() updateShiftParent =new EventEmitter();
@@ -30,6 +32,7 @@ export class ShiftFormComponent implements OnInit {
   selectedDutyID:number=0
   selectedDutyName:string;
   date:Date;
+  
   Dutys:Array<DutyType>;
   newShift:Shift;
   alertFlag:boolean=false;
@@ -58,12 +61,14 @@ export class ShiftFormComponent implements OnInit {
   }
   addShift(){
     this.addShiftButtonFlag=false;
-    if(this.date!=null&&this.selectedDutyID!=0){
-    this.newShift.User_=this.user;
-    this.newShift.DutyNum=this.cell_Number;
-    this.newShift.Date=new Date(this.date);
-    this.newShift.DutyType_.ID=this.selectedDutyID;
-    if(this.newShift.Date.getMonth()+1==this.month){
+    if(this.day!=undefined&&this.selectedDutyID!=0&&this.day<=31){
+      this.newShift.Date=new Date(""+this.month+"/"+this.day+"/"+this.year);
+     this.newShift.Day=this.day;
+     this.newShift.Month=this.month;
+     this.newShift.Year=this.year;
+     this.newShift.User_=this.user;
+     this.newShift.DutyNum=this.cell_Number;
+     this.newShift.DutyType_.ID=this.selectedDutyID;
       this.taskService.addShift(this.newShift).subscribe(
         data=>{
           this.call_parent();
@@ -72,16 +77,10 @@ export class ShiftFormComponent implements OnInit {
           this.alertMessage=" لا يمكن اجراء هذه العملية  ";
            this.alertFlag=true;
           }
-      )
-    }
-    else{
-      this.alertMessage="الشهر غير متطابق";
-      this.alertFlag=true;
-
-    }
+      ) 
   }
   else{
-    this.alertMessage=" من فضلك ادخل التاريخ ونوع النبطشية";
+    this.alertMessage=" من فضلك ادخل يوم صحيح ونوع النبطشية";
     this.alertFlag=true;
   }
   this.addShiftButtonFlag=true;

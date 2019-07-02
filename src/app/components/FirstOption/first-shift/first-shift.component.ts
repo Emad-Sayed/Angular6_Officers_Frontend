@@ -14,6 +14,8 @@ import { UserService } from 'src/app/services/user.service';
 export class FirstShiftComponent implements OnInit {
 
   @Input() month
+  @Input() year
+  day:number;
   @Output() updateShiftParent =new EventEmitter();
   @Output() closeComponent =new EventEmitter();
   user:User;
@@ -59,32 +61,30 @@ export class FirstShiftComponent implements OnInit {
   }
   addShift(){
     this.submitFlag=false;
-    if(this.date!=null&&this.selectedDutyID!=0){
-    this.newShift.User_=this.user;
-    this.newShift.DutyNum=1;
-    this.newShift.Date=new Date(this.date);
-    this.newShift.DutyType_.ID=this.selectedDutyID;
-    if(this.newShift.Date.getMonth()+1==this.month){
-      this.taskService.addFirstShift(this.newShift).subscribe(
-        data=>{
-          this.call_parent();
-        },
-        error=>{ 
-          this.alertMessage=" الضابط متواجد في هذا الشهر "
-          this.alertFlag=true;   
-         }
-      )
+    if(this.day!=undefined&&this.selectedDutyID!=0&&this.day<=31){
+      this.newShift.Date=new Date(""+this.month+"/"+this.day+"/"+this.year);
+      this.newShift.Day=this.day;
+      this.newShift.Month=this.month;
+      this.newShift.Year=this.year;
+      this.newShift.User_=this.user;
+      this.newShift.DutyNum=1;
+      this.newShift.DutyType_.ID=this.selectedDutyID;
+        this.taskService.addFirstShift(this.newShift).subscribe(
+          data=>{
+            console.log(data)
+            this.call_parent();
+          },
+          error=>{ 
+            this.alertMessage=" الضابط متواجد في هذا الشهر "
+            this.alertFlag=true;   
+           }
+        )
     }
     else{
-      this.alertMessage="الشهر غير متطابق"
-      this.alertFlag=true;   
-    }
-
-    }
-    else{
-      this.alertMessage="  من فضلك ادخل التاريخ و نوع النبطشية !";
+      this.alertMessage=" من فضلك ادخل يوم صحيح ونوع النبطشية";
       this.alertFlag=true;
     }
+    this.submitFlag=true;
   }
   call_parent(){
     this.updateShiftParent.next();

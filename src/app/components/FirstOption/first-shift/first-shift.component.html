@@ -14,14 +14,14 @@
                     <app-searsh-filter (BackWithData)="setUser($event)" *ngIf="searchNameFlag"></app-searsh-filter>
 
                 <form  id="contactFrm" name="contactFrm">
-                    <input [(ngModel)]="date" style="text-align:right;" type="date" required=""  name="name" class="txt">
-                    <input readonly [(ngModel)]="this.user.ID" (change)="getUser()" style="text-align:center;" type="text" required="" placeholder="كود الظابط  " value="" name="usercode" class="txt">
+                  <input  [(ngModel)]="day"  style="text-align:center; width: 350px ;padding: 10px" type="number" required="" placeholder="ادخل اليوم   " value="" name="day" class="txt">
+                  <input readonly [(ngModel)]="this.user.ID"  style="text-align:center;" type="text" required="" placeholder="كود الظابط  " value="" name="usercode" class="txt">
 
                     <input readonly [(ngModel)]="this.user.name" style="text-align:center;" type="text" required="" placeholder="اسم الظابط  " value="" name="name" class="txt">
                     <input readonly style="text-align:center;" type="text" required="" placeholder="رقم النبطشية   " value="1" name="cell_Number" class="txt">
 
 
-                    <select [(ngModel)]="selectedDutyName" (click)="getSelectedOption($event)" style="width: 350px" id="singleSelect" >
+                    <select [(ngModel)]="selectedDutyName" (click)="getSelectedOption($event)" style="width: 350px;padding: 10px" id="singleSelect" >
                       <option *ngFor="let data of Dutys" value="{{data.ID}}">{{data.DutyType_Name}}</option>
                       </select>           
                        

@@ -7,7 +7,7 @@
   <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
       <div class="panel panel-info">
           <div class="panel-heading">
-              <div class="panel-title"> إضافــــــــــــة  مــســـتــشـــفـــي جـــــديـــــدة</div>
+              <div class="panel-title"> إضافــــــــــــة  تــــــــخـــــصــــــص جـــــديـــــدة</div>
           </div>  
           <div class="panel-body" >
             
@@ -22,17 +22,16 @@
         
                       <div id="div_id_username" class="form-group required">
                           <div class="controls col-md-8 ">
-                              <input  [(ngModel)]="newHospital.Hospital_Name" class="input-md  textinput textInput form-control" maxlength="30" name="username" placeholder="اسم المستشفي" style="margin-bottom: 10px;text-align: center" type="text" />
+                              <input  [(ngModel)]="newSpetial.Specialization_Name" class="input-md  textinput textInput form-control" maxlength="30" name="username" placeholder="اسم التخصص" style="margin-bottom: 10px;text-align: center" type="text" />
                           </div>
-                          <label for="id_username" class="control-label col-md-4  requiredField"> اســـــم الـــمـــســـتـــشـــفـــي<span class="asteriskField">*</span> </label>
+                          <label for="id_username" class="control-label col-md-4  requiredField"> اســـــم التــــــــخـــــصـــــــص<span class="asteriskField">*</span> </label>
 
                       </div>
                   </form>
 
               </form>
               <div class="container  "style="margin-left:180px;padding:10px ">
-                      <button *ngIf="addOrEditHospitalFlag" (click)="addNewHospital()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
-                  <!--  <button *ngIf="!addOrEditHospitalFlag" (click)="editHospital()" type="button" class="btn btn-primary btn-md"><b>تـــــعديــــــل</b></button>-->
+                      <button  (click)="submitSpetial()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
                   </div>
           </div>
       </div>

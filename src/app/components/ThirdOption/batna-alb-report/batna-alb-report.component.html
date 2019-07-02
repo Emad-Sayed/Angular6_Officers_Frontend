@@ -4,8 +4,22 @@
 
 
 
-<div class="container  col-lg-offset-5">
-        <input (change)="newDate()" [(ngModel)]="dateString" type="date">
+<div *ngIf="PrintReady"  class="container " >
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        <input  style="float: left;width: 200px; text-align: center"  type="number" name="d" [(ngModel)]="day"
+        class="form-control " id="textSearch" placeholder="ادخل  اليوم">
+        <input  style="float: left;width: 200px;text-align: center"  type="number" name="m" [(ngModel)]="month"
+        class="form-control " id="textSearch" placeholder="ادخل  الشهر">
+        <input  style="float: left;width: 200px;text-align: center"  type="number" name="y" [(ngModel)]="year"
+        class="form-control " id="textSearch" placeholder="ادخل  السنة">
+    </div>
+    <div class="row">
+            <div class="col-md-4 col-md-offset-4" >
+                <button (click)="getReports()" class="btn btn-md btn-success"style="width: 230px">تجهيز للطباعة</button>
+</div>
+    </div>
+</div>
 </div>
 <div style="clear: both"></div>
 

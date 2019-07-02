@@ -69,7 +69,6 @@ export class HospitalsDutiesComponent implements OnInit {
     )
   }
   getDuties(){
-    this.dutiesSpinner=true;
     this.dutysService.getAllDuties(this.current_duty_page_number).subscribe(
       data=>{
         if(data.length>0){

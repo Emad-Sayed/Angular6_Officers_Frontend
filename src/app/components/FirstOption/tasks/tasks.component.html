@@ -36,7 +36,7 @@
 
 
   <div  *ngIf="this.shiftFormFrag" class="container  col-lg-offset-4">
-    <app-shift-form (updateShiftParent)="updateShiftList()" (closeComponent)="closeFormShiftComponent()" [month]="month" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user"></app-shift-form>
+    <app-shift-form (updateShiftParent)="updateShiftList()" (closeComponent)="closeFormShiftComponent()" [month]="month"[year]="year" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user"></app-shift-form>
 
   </div>
   <div  *ngIf="this.shiftDetails" class="container  col-lg-offset-4">
@@ -44,7 +44,7 @@
   </div>
 
   <div  *ngIf="this.firstShift" class="container  col-lg-offset-4">
-      <app-first-shift (updateShiftParent)="updateShiftList()" (closeComponent)="closeFirstShiftComponent()" [month]="month"></app-first-shift>
+      <app-first-shift (updateShiftParent)="updateShiftList()" (closeComponent)="closeFirstShiftComponent()" [month]="month" [year]="year"></app-first-shift>
     </div>
   
   <div *ngIf="spinnerTable" class="container  col-lg-offset-5"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div>

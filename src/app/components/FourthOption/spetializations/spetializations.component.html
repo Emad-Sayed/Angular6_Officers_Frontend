@@ -1,0 +1,48 @@
+
+
+
+
+<app-add-spetialization *ngIf="addSpeital" (call_parent_close_me)="closeAddSpetialComponent()"></app-add-spetialization>
+
+<div class="row" >
+    <div  class="col-xs-4" >
+        <div class="container">
+            <div style="width: 1600px" class="row text-center">
+
+            <div class="col" >
+                <div class="pricing-table">
+                    <div class="panel panel-primary" style="border: none;">
+                        <div class="controle-header panel-heading panel-heading-landing">
+                            <h1 class="panel-title panel-title-landing">
+                                 الـــتـــخــــصــــصــــات
+                            </h1>
+                            
+                        </div>
+                        <div class="controle-panel-heading panel-heading panel-heading-landing-box">
+                          عرض التخصصات
+                          </div>
+                        <div class="panel-body panel-body-landing">
+                                <div *ngIf="spetialSpinner" style="margin-left: 40px"><i class="fa fa-spinner fa-spin" style="font-size: 25px" ></i></div>
+
+
+                            <table class="table" >
+                                
+                                <tr *ngFor="let data of spetials">
+                                    <td width="50px"><i class="fa fa-check"></i></td>
+                                    <td>{{data.Specialization_Name}}</td>
+                                </tr>
+      
+                            </table>
+                        </div>
+                        <div  class="panel-footer panel-footer-landing">
+                            
+                            <button (click)="addNewSpetial()" class="btn btn-success btn-lg">اضافة تخصص</button> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+    

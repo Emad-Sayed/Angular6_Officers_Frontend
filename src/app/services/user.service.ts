@@ -52,4 +52,12 @@ export class UserService {
     let URL=this.mainURL+"/GetHospitals";
     return this.http.get<Array<Hospital>>(URL);
   }
+  getSpetials():Observable<Array<Specialization>>{
+    let URL=this.mainURL+"/GetSpetials";
+    return this.http.get<Array<Specialization>>(URL);   
+  }
+  addSpetial(Spetial:Specialization){
+    let URL=this.mainURL+"/AddSpetial";
+    return this.http.post(URL,Spetial);  
+  }
 }

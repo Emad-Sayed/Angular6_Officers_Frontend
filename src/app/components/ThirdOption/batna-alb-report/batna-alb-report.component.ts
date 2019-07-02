@@ -44,10 +44,10 @@ export class BatnaAlbReportComponent implements OnInit {
 
   aksamShifts:Array<Shift>;
   aksamSpinner:boolean;
-
-
+  PrintReady:boolean;
 
   constructor(private reportService:ReportService,private loginService:LoginService) {
+    this.PrintReady=true;
     this.batnaSpinner=true;
     this.est2balSpinner=true;
     this.grahaSpinner=true;
@@ -59,7 +59,6 @@ export class BatnaAlbReportComponent implements OnInit {
     this.aksamSpinner=true;
     this.getCurrentDate();
     this.LogedUsed=this.loginService.getLoggedUser();
-    this.getReports();
 
    }
 
@@ -70,14 +69,9 @@ export class BatnaAlbReportComponent implements OnInit {
     this.month  = new Date().getMonth()+1;
     this.year  = new Date().getUTCFullYear();
   }
-  newDate(){
-    this.newdateObject=new Date(this.dateString);
-    this.day=this.newdateObject.getDate();
-    this.month=this.newdateObject.getMonth()+1;
-    this.year=this.newdateObject.getUTCFullYear();
-    this.getReports();
-  }
+
   getReports(){
+    this.PrintReady=false;
     this.getReportDataBatna();
     this.getReportDataEst2bal();
 

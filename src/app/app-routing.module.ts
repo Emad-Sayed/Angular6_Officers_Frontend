@@ -17,22 +17,16 @@ import { NewDutyComponent } from './components/FourthOption/new-duty/new-duty.co
 import { NewHospitalComponent } from './components/FourthOption/new-hospital/new-hospital.component';
 import { AddUserComponent } from './components/SecondOption/add-user/add-user.component';
 import { ChangePasswordComponent } from './components/Common/change-password/change-password.component';
+import { SpetializationsComponent } from './components/FourthOption/spetializations/spetializations.component';
+import { AddSpetializationComponent } from './components/FourthOption/add-spetialization/add-spetialization.component';
 const routes: Routes = [
-  { path: '', component:LoginComponent  },
-  { path: 'home', component:NavbarComponent,children:[
-  {
-    path:'',component:HomeComponent,
-  },
-  {
-    path:'tasks',component:TasksComponent
-  },
-  {
-    path:'users',component:UsersTableComponent
-  },
-
-  {
-    path:'hospitals_duties',component:HospitalsDutiesComponent
-  },
+  {path: '', component:LoginComponent  },
+  {path: 'home', component:NavbarComponent,children:[
+  {path:'',component:HomeComponent,},
+  {path:'tasks',component:TasksComponent},
+  {path:'users',component:UsersTableComponent},
+  {path:'hospitals_duties',component:HospitalsDutiesComponent},
+  {path:'spetials',component:SpetializationsComponent},
   {path:'change_password',component:ChangePasswordComponent}
   ] 
 },
@@ -51,4 +45,5 @@ export class AppRoutingModule { }
 export const routingComponent=[LoginComponent,NavbarComponent,HomeComponent,MyfooterComponent,
   TasksComponent,ShiftFormComponent,ShiftDetailsComponent,FirstShiftComponent,UsersTableComponent,
 SearshFilterComponent,UserDetailsComponent,BatnaAlbReportComponent,HospitalsDutiesComponent,
-NewDutyComponent,NewHospitalComponent,AddUserComponent,ChangePasswordComponent]
+NewDutyComponent,NewHospitalComponent,AddUserComponent,ChangePasswordComponent,SpetializationsComponent,
+AddSpetializationComponent]
