@@ -6,12 +6,13 @@ import { Rank } from '../models/Rank';
 import { Specialization } from '../models/Specialization';
 import { Degree } from '../models/Degree';
 import { Hospital } from '../models/Hospital';
+import { ServerDomain, LocalDomain } from './Configration';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  mainURL:string ="http://localhost:50135/api/user";
+  mainURL:string =ServerDomain+"/api/user";
   constructor(private http:HttpClient) { }
   getUser(id:number):Observable<User>{
     return this.http.get<User>(this.mainURL+"/getuser?id="+id);

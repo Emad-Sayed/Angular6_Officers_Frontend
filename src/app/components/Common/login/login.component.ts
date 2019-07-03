@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   login(){
     this.loginService.LoginCheck(this.username,this.password).subscribe(
       data=>{
-        console.log(data)
         window.localStorage.setItem('user',JSON.stringify(data));
         this.router.navigate(['/home']);
       },

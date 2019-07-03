@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { DutyType } from '../models/DutyType';
 import { Observable } from 'rxjs';
 import { Hospital } from '../models/Hospital';
+import { ServerDomain, LocalDomain } from './Configration';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DutyService {
-  mainURL:string ="http://localhost:50135/api/duty/"
+  mainURL:string =ServerDomain+"/api/duty/"
   constructor(private http:HttpClient ) {}
   getDuties(id:number):Observable<Array<DutyType>>{
     let URL=this.mainURL+'/GetDuties?id='+id;

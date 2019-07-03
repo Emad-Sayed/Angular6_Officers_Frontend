@@ -43,6 +43,7 @@ export class TasksComponent implements OnInit {
 
 
   getShifts(){
+
     this.taksService.getShifts(this.month,this.year).subscribe(
       data=>{
         this.shifts=data;
@@ -52,6 +53,7 @@ export class TasksComponent implements OnInit {
       error=>{
         this.alertFlag=true;
         this.spinnerTable=false;
+
       }
     )
   }

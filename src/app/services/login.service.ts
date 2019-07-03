@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/User';
+import { ServerDomain, LocalDomain } from './Configration';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  mainURL:string ="http://localhost:50135/api/user/"
+  mainURL:string =ServerDomain+"/api/user/"
   header:HttpHeaders;
   constructor(private http:HttpClient) { 
     this.header=new HttpHeaders();
@@ -14,6 +15,7 @@ export class LoginService {
   }
   LoginCheck(username:string,password:string){
     let URL=this.mainURL+"checklogin"
+    console.log(URL)
     return this.http.post(URL,{'username':username,'password':password},{headers:this.header});
   }
   changePassword(user:User){
