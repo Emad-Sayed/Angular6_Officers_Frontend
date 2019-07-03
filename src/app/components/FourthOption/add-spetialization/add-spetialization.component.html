@@ -4,7 +4,7 @@
 <div class="container">    
   <a  (click)="closeThisComponent()" style="margin-top: 16px; font-size: 30px;" class="fa fa-times"></a>
 
-  <div id="signupbox" style=" margin-top:50px" class="mainbox col ">
+  <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6  col-md-offset-3">
       <div class="panel panel-info">
           <div class="panel-heading">
               <div class="panel-title"> إضافــــــــــــة  تــــــــخـــــصــــــص جـــــديـــــدة</div>
@@ -31,8 +31,9 @@
 
               </form>
               <div class="container  "style="margin-left:180px;padding:10px ">
-                      <button  (click)="submitSpetial()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
-                  </div>
+                <button *ngIf="ButtonFlag" (click)="submitSpetial()" type="button" class="btn btn-primary btn-md"><b>إضافــــــــــــة</b></button>
+                <button *ngIf="!ButtonFlag" (click)="editSpetial()" type="button" class="btn btn-primary btn-md"><b>تــعديــــــل</b></button>
+            </div>
           </div>
       </div>
   </div> 

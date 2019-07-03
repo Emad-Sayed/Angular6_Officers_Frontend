@@ -27,6 +27,10 @@ export class DutyService {
     let URL=this.mainURL+'/EditDuty';
     return this.http.post(URL,newDuty);
   }
+  deleteDuty(id:number){
+    let URL=this.mainURL+'/DeleteDutyType?id='+id;
+    return this.http.delete(URL);
+  }
   addNewHospital(newHospital:Hospital){
     let URL=this.mainURL+'/AddHospital';
     return this.http.post(URL,newHospital);
@@ -34,6 +38,10 @@ export class DutyService {
   editNewHospital(newHospital:Hospital){
     let URL=this.mainURL+'/EditHospital';
     return this.http.post(URL,newHospital);
+  }
+  deleteHospital(id:number){
+    let URL=this.mainURL+'/DeleteHospital?id='+id;
+    return this.http.delete(URL);
   }
 
 }

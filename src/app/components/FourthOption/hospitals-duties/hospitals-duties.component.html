@@ -31,7 +31,8 @@
                                 
                                 <tr *ngFor="let data of hospitals">
                                     <td width="50px"><i class="fa fa-check"></i></td>
-                            <!--        <td><button (click)="editHospital($event)" class="btn btn-warning" id="{{data.ID}}">تعديل</button></td>-->
+                                    <td><button (click)="editHospital($event)" class="btn btn-warning" id="{{data.ID}}">تعديل</button></td>
+                                    <td><button (click)="deleteHospital($event)" class="btn btn-danger" id="{{data.ID}}">مسح</button></td>
                                     <td>{{data.Hospital_Name}}</td>
                                 </tr>
       
@@ -69,8 +70,9 @@
 
                                         <tr *ngFor="let data of duties; index as i">
                                             <td width="50px"><i class="fa fa-check"></i></td>
-                                        <!--    <td><button class="btn btn-warning" (click)="editDuty($event)" id="{{data.ID}}">تعديل</button></td>-->
-                                            <td>{{data.DutyType_Name}}</td>
+                                            <td><button (click)="editDuty($event)" class="btn btn-warning"  id="{{data.ID}}">تعديل</button></td>
+                                            <td><button (click)="deleteDuty($event)" class="btn btn-danger" id="{{data.ID}}">مسح</button></td>
+                                        <td>{{data.DutyType_Name}}</td>
                                             <td>{{data.hospital.Hospital_Name}}</td>
 
                                         </tr>

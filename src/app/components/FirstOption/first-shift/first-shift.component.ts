@@ -46,6 +46,19 @@ export class FirstShiftComponent implements OnInit {
       error=>{}
     )
   }
+  setUserByCode(){
+    this.userService.getUser(this.user.ID).subscribe(
+      data=>{
+        this.user=data;
+        this.getDuties();
+        this.searchButtonFlag=false;
+        this.submitFlag=true;
+      },
+      error=>{
+        alert("كود خطأ")
+      }
+    )
+  }
   setUser(selectedUser:User){
     this.user=selectedUser;
     this.getDuties();

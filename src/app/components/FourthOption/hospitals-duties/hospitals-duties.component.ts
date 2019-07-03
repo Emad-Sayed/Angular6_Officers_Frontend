@@ -115,6 +115,20 @@ export class HospitalsDutiesComponent implements OnInit {
       this.addEditDutyFlag=true;
       this.addOrEditDutyFlag=true;
     }
+    deleteDuty(ele){
+      this.selectedDutyID=ele.currentTarget.id;
+      let con=confirm("تأكيد عملية المسح؟");
+      if(con){
+      this.dutysService.deleteDuty(this.selectedDutyID).subscribe(
+        data=>{
+          this.getDuties();
+        },
+        error=>{
+          alert("لا يمكن مسح الخدمة")
+        }
+      )
+    }
+    }
     editHospital(ele){
       this.addEditDutyFlag=false;
       this.selectedHospitalID=ele.currentTarget.id;
@@ -133,6 +147,20 @@ export class HospitalsDutiesComponent implements OnInit {
       this.addEditHospitalFlag=true;
       this.addOrEditHospitalFlag=true;
     }
+    deleteHospital(ele){
+      this.selectedHospitalID=ele.currentTarget.id;
+      let con=confirm("تأكيد عملية المسح؟");
+      if(con){
+      this.dutysService.deleteHospital(this.selectedHospitalID).subscribe(
+        data=>{
+          this.getHospitals();
+        },
+        error=>{
+          alert("لا يمكن مسح المستشفي")
+        }
+      )
+    }
+  }
     closeAddDutyComponent(){
       this.addEditDutyFlag=false;
       this.getDuties();

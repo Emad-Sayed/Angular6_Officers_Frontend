@@ -15,7 +15,7 @@
 
                 <form  id="contactFrm" name="contactFrm">
                   <input  [(ngModel)]="day"  style="text-align:center; width: 350px ;padding: 10px" type="number" required="" placeholder="ادخل اليوم   " value="" name="day" class="txt">
-                  <input readonly [(ngModel)]="this.user.ID"  style="text-align:center;" type="text" required="" placeholder="كود الظابط  " value="" name="usercode" class="txt">
+                  <input (change)="setUserByCode()" [(ngModel)]="this.user.ID"  style="text-align:center;" type="text" required="" placeholder="كود الظابط  " value="" name="usercode" class="txt">
 
                     <input readonly [(ngModel)]="this.user.name" style="text-align:center;" type="text" required="" placeholder="اسم الظابط  " value="" name="name" class="txt">
                     <input readonly style="text-align:center;" type="text" required="" placeholder="رقم النبطشية   " value="1" name="cell_Number" class="txt">

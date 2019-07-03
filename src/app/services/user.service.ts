@@ -61,4 +61,12 @@ export class UserService {
     let URL=this.mainURL+"/AddSpetial";
     return this.http.post(URL,Spetial);  
   }
+  editSpetial(Spetial:Specialization){
+    let URL=this.mainURL+"/EditSpetial";
+    return this.http.post(URL,Spetial);  
+  }
+  deleteSpetial(id:number){
+    let URL=this.mainURL+"/DeleteSpetial?id="+id;
+    return this.http.delete(URL);  
+  }
 }

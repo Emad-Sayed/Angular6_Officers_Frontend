@@ -63,7 +63,7 @@ export class NewDutyComponent implements OnInit {
     console.log(this.selectedHospitalID)
     if(this.selectedHospitalID==0||this.newDuty.DutyType_Name==null){
       this.alertFlag=true;
-      this.alertMessage="يجب ملأ جميع الحقول"
+      this.alertMessage="يجب ملأ جميع الحقول";
     }
     else{
       this.newDuty.hospital.ID=this.selectedHospitalID;
