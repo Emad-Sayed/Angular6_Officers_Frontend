@@ -5,6 +5,7 @@ import { Degree } from 'src/app/models/Degree';
 import { Specialization } from 'src/app/models/Specialization';
 import { User } from 'src/app/models/User';
 import { Hospital } from 'src/app/models/Hospital';
+import { Type } from 'src/app/models/Type';
 
 @Component({
   selector: 'app-add-user',
@@ -18,6 +19,9 @@ export class AddUserComponent implements OnInit {
   alertFlag:boolean;
   alertMessage:string;
 
+  selectedType:string;
+  selectedTypeID:number;
+
   selectedDegree:string;
   selectedDegreeID:number;
 
@@ -30,7 +34,7 @@ export class AddUserComponent implements OnInit {
   selectedHospital:string;
   selectedHospitalID:number;
 
-
+  Types:Array<Type>
   Ranks:Array<Rank>;
   Degrees:Array<Degree>
   Spetializations:Array<Specialization>
@@ -39,6 +43,7 @@ export class AddUserComponent implements OnInit {
   @Output() call_parent_close_me=new EventEmitter();
   constructor(private userService:UserService) {
     this.user=new User();
+    this.getTypes();
     this.getRanks();
     this.getDegress();
     this.getSpetializations();
@@ -52,7 +57,11 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  getTypes(){
+    this.userService.getTypes().subscribe(
+      data=>{this.Types=data}
+    )
+  }
   getRanks(){
     this.userService.getRanks().subscribe(
       data=>{this.Ranks=data}
@@ -73,6 +82,9 @@ export class AddUserComponent implements OnInit {
       data=>{this.Hospitals=data}
     )
   }
+  getSelectedType(ele){
+    this.selectedTypeID=ele.currentTarget.value;
+  }
   getSelectedRank(ele){
     this.selectedRankID=ele.currentTarget.value;
   }
@@ -86,7 +98,8 @@ export class AddUserComponent implements OnInit {
     this.selectedHospitalID=ele.currentTarget.value;
   }
   addNewUser(){
-    if(this.selectedRankID!=0&&this.selectedDegreeID!=0&&this.selectedSpetializationID!=0&&this.selectedHospitalID!=0){
+    if(this.selectedRankID!=0&&this.selectedDegreeID!=0&&this.selectedSpetializationID!=0&&this.selectedHospitalID!=0&&this.selectedTypeID!=0){
+      this.user.MyType.ID=this.selectedTypeID;
       this.user.MyRank.ID=this.selectedRankID;
       this.user.MyDegree.ID=this.selectedDegreeID;
       this.user.MySpecialization.ID=this.selectedSpetializationID;

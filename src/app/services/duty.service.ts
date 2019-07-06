@@ -27,9 +27,9 @@ export class DutyService {
     let URL=this.mainURL+'/EditDuty';
     return this.http.post(URL,newDuty);
   }
-  deleteDuty(id:number){
-    let URL=this.mainURL+'/DeleteDutyType?id='+id;
-    return this.http.delete(URL);
+  deleteDuty(dutyType:DutyType){
+    let URL=this.mainURL+'/Post_DeleteDutyType';
+    return this.http.post(URL,dutyType);
   }
   addNewHospital(newHospital:Hospital){
     let URL=this.mainURL+'/AddHospital';
@@ -39,9 +39,9 @@ export class DutyService {
     let URL=this.mainURL+'/EditHospital';
     return this.http.post(URL,newHospital);
   }
-  deleteHospital(id:number){
-    let URL=this.mainURL+'/DeleteHospital?id='+id;
-    return this.http.delete(URL);
+  deleteHospital(hospital:Hospital){
+    let URL=this.mainURL+'/Post_DeleteHospital';
+    return this.http.post(URL,hospital);
   }
 
 }

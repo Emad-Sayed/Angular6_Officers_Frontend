@@ -51,7 +51,13 @@ export class SpetializationsComponent implements OnInit {
     this.selectedSpetialID=ele.currentTarget.id;
     let con=confirm("تأكيد عملية المسح؟");
     if(con){
-    this.userSerive.deleteSpetial(this.selectedSpetialID).subscribe(
+      for(let i=0;i<this.spetials.length;i++){
+        if(this.spetials[i].ID==this.selectedSpetialID){
+          this.selectedSpetial=this.spetials[i];
+          break;
+        }
+      }
+    this.userSerive.deleteSpetial(this.selectedSpetial).subscribe(
       data=>{
         this.getSpetials();
       },

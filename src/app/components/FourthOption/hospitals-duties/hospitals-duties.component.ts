@@ -119,7 +119,13 @@ export class HospitalsDutiesComponent implements OnInit {
       this.selectedDutyID=ele.currentTarget.id;
       let con=confirm("تأكيد عملية المسح؟");
       if(con){
-      this.dutysService.deleteDuty(this.selectedDutyID).subscribe(
+        for(let i=0;i<this.duties.length;i++){
+          if(this.duties[i].ID==this.selectedDutyID){
+            this.selectedDuty=this.duties[i];
+            break;
+          }
+        }
+      this.dutysService.deleteDuty(this.selectedDuty).subscribe(
         data=>{
           this.getDuties();
         },
@@ -151,7 +157,13 @@ export class HospitalsDutiesComponent implements OnInit {
       this.selectedHospitalID=ele.currentTarget.id;
       let con=confirm("تأكيد عملية المسح؟");
       if(con){
-      this.dutysService.deleteHospital(this.selectedHospitalID).subscribe(
+        for(let i=0;i<this.hospitals.length;i++){
+          if(this.hospitals[i].ID==this.selectedHospitalID){
+            this.selectedHospital=this.hospitals[i];
+            break;
+          }
+        }
+      this.dutysService.deleteHospital(this.selectedHospital).subscribe(
         data=>{
           this.getHospitals();
         },

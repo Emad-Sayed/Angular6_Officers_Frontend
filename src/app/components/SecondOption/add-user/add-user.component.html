@@ -73,6 +73,15 @@
                             <label for="id_catagory" class="control-label col-md-4  requiredField"> الــــمــــســـــتـــــشـــــفـــــــي<span class="asteriskField">*</span> </label>
                         </div>     
 
+                        <div id="div_id_catagory" class="form-group required">
+                            <div class="controls col-md-8 "> 
+                              <select  [(ngModel)]="selectedType" (click)="getSelectedType($event)" style="width: 330px" id="singleSelect" name="4" >
+                                <option *ngFor="let data of Types" value="{{data.ID}}">{{data.Type_Name}}</option>
+                              </select>      
+                            </div>
+                            <label for="id_catagory" class="control-label col-md-4  requiredField"> الـــــصــــــــلاحـــــــــــيــــــة<span class="asteriskField">*</span> </label>
+                        </div>    
+
 
                     </form>
 

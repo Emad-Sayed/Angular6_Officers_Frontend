@@ -1,6 +1,5 @@
 
 
-<div style="width:400px; margin:0 auto; padding: 10px" > <h3> نوبتجية اطباء المجمع الطبي   {{this.arabicYear}}/{{this.arabicMonth}}/{{this.arabicDay}} </h3></div>
 
 
 
@@ -41,15 +40,16 @@
                 <thead>
 
                     <tr>
-                        <th style="font-size: 15px" >التخصص</th>
-                        <th style="font-size: 15px">المؤهل</th>
-                        <th style="font-size: 15px">الاسم </th>
-                        <th style="font-size: 15px">الرتبة</th>
-                        <th style="font-size: 15px">مكان الخدمة</th>
+                        <th style="font-size: 11px" >التخصص</th>
+                        <th style="font-size: 11px">المؤهل</th>
+                        <th style="font-size: 11px">الاسم </th>
+                        <th style="font-size: 11px">الرتبة</th>
+                        <th style="font-size: 11px">مكان الخدمة</th>
                     </tr>
                     <tr>
-                            <th style="text-align: center;font-size: 20px" colspan="5">الــــبـــــاطــــــنــــــة</th>
+                            <th style="text-align: center;font-size: 13px" colspan="5">الــــبـــــاطــــــنــــــة</th>
                         </tr>
+              
                   </thead>
         </table>
         <div *ngIf="batnaSpinner" style="margin-left: 310px" class="col-xs-3">
@@ -74,14 +74,21 @@
               <thead>
  
                   <tr>
-                    <th style="font-size: 15px" >التخصص</th>
-                    <th style="font-size: 15px">المؤهل</th>
-                    <th style="font-size: 15px">الاسم </th>
-                    <th style="font-size: 15px">الرتبة</th>
-                    <th style="font-size: 15px">مكان الخدمة</th>
+                    <th style="font-size: 11px" >التخصص</th>
+                    <th style="font-size: 11px">المؤهل</th>
+                    <th style="font-size: 11px">الاسم </th>
+                    <th style="font-size: 11px">الرتبة</th>
+                    <th style="font-size: 11px">مكان الخدمة</th>
                   </tr>
+                  <tr *ngFor="let data of ka2dMnob">
+                        <td>{{data.User_.MySpecialization.Specialization_Name}}</td>
+                        <td>{{data.User_.MyDegree.Degree_Name}}</td>
+                        <td>{{data.User_.name}}</td>
+                        <td>{{data.User_.MyRank.Rank_Name}}</td>
+                        <td>{{data.DutyType_.DutyType_Name}}</td>
+                    </tr>   
                   <tr>
-                        <th style="text-align: center;font-size: 20px" colspan="5">الاســــتــــقــــبــــــال</th>
+                        <th style="text-align: center;font-size: 13px" colspan="5">الاســــتــــقــــبــــــال</th>
                     </tr>
                 </thead>
               <div *ngIf="est2balSpinner"  class="col-xs-3">
@@ -123,14 +130,14 @@
                 <thead>
 
                     <tr>
-                        <th style="font-size: 15px" >التخصص</th>
-                        <th style="font-size: 15px">المؤهل</th>
-                        <th style="font-size: 15px">الاسم </th>
-                        <th style="font-size: 15px">الرتبة</th>
-                        <th style="font-size: 15px">مكان الخدمة</th>
+                        <th style="font-size: 11px" >التخصص</th>
+                        <th style="font-size: 11px">المؤهل</th>
+                        <th style="font-size: 11px">الاسم </th>
+                        <th style="font-size: 11px">الرتبة</th>
+                        <th style="font-size: 11px">مكان الخدمة</th>
                     </tr>
                     <tr>
-                            <th style="text-align: center;font-size: 20px" colspan="5">الــــــــــقـــــــلـــــــــب</th>
+                            <th style="text-align: center;font-size: 13px" colspan="5">الــــــــــقـــــــلـــــــــب</th>
                         </tr>
                   </thead>
         </table>
@@ -156,14 +163,14 @@
               <thead>
 
                   <tr>
-                    <th style="font-size: 15px" >التخصص</th>
-                    <th style="font-size: 15px">المؤهل</th>
-                    <th style="font-size: 15px">الاسم </th>
-                    <th style="font-size: 15px">الرتبة</th>
-                    <th style="font-size: 15px">مكان الخدمة</th>
+                    <th style="font-size: 11px" >التخصص</th>
+                    <th style="font-size: 11px">المؤهل</th>
+                    <th style="font-size: 11px">الاسم </th>
+                    <th style="font-size: 11px">الرتبة</th>
+                    <th style="font-size: 11px">مكان الخدمة</th>
                   </tr>
                   <tr>
-                            <th style="text-align: center;font-size: 20px" colspan="5">الــــــجــــــراحــــــــــة</th>
+                            <th style="text-align: center;font-size: 13px" colspan="5">الــــــجــــــراحــــــــــة</th>
                   </tr>
 
                 </thead>
@@ -197,14 +204,14 @@
                     <thead>
 
                         <tr>
-                            <th style="font-size: 15px" >التخصص</th>
-                            <th style="font-size: 15px">المؤهل</th>
-                            <th style="font-size: 15px">الاسم </th>
-                            <th style="font-size: 15px">الرتبة</th>
-                            <th style="font-size: 15px">مكان الخدمة</th>
+                            <th style="font-size: 11px" >التخصص</th>
+                            <th style="font-size: 11px">المؤهل</th>
+                            <th style="font-size: 11px">الاسم </th>
+                            <th style="font-size: 11px">الرتبة</th>
+                            <th style="font-size: 11px">مكان الخدمة</th>
                         </tr>
                         <tr>
-                                <th style="text-align: center;font-size: 20px" colspan="5">الـعـيـون التـخــصـصـي</th>
+                                <th style="text-align: center;font-size: 13px" colspan="5">الـعـيـون التـخــصـصـي</th>
                             </tr>
                       </thead>
             </table>
@@ -229,14 +236,14 @@
                   </tbody>
                   <thead>
                       <tr>
-                        <th style="font-size: 15px" >التخصص</th>
-                        <th style="font-size: 15px">المؤهل</th>
-                        <th style="font-size: 15px">الاسم </th>
-                        <th style="font-size: 15px">الرتبة</th>
-                        <th style="font-size: 15px">مكان الخدمة</th>
+                        <th style="font-size: 11px" >التخصص</th>
+                        <th style="font-size: 11px">المؤهل</th>
+                        <th style="font-size: 11px">الاسم </th>
+                        <th style="font-size: 11px">الرتبة</th>
+                        <th style="font-size: 11px">مكان الخدمة</th>
                       </tr>
                       <tr>
-                            <th style="text-align: center;font-size: 20px" colspan="5">الـــــــكـــــــــلــــــــــي</th>
+                            <th style="text-align: center;font-size: 13px" colspan="5">الـــــــكـــــــــلــــــــــي</th>
                         </tr>
                     </thead>
                     <div *ngIf="kelaSpinner"  class="col-xs-3">
@@ -268,14 +275,14 @@
                         <thead>
 
                             <tr>
-                                <th style="font-size: 15px" >التخصص</th>
-                                <th style="font-size: 15px">المؤهل</th>
-                                <th style="font-size: 15px">الاسم </th>
-                                <th style="font-size: 15px">الرتبة</th>
-                                <th style="font-size: 15px">مكان الخدمة</th>
+                                <th style="font-size: 11px" >التخصص</th>
+                                <th style="font-size: 11px">المؤهل</th>
+                                <th style="font-size: 11px">الاسم </th>
+                                <th style="font-size: 11px">الرتبة</th>
+                                <th style="font-size: 11px">مكان الخدمة</th>
                             </tr>
                             <tr>
-                                    <th style="text-align: center;font-size: 20px" colspan="5">الاسـنـان التـخــصـصـي</th>
+                                    <th style="text-align: center;font-size: 13px" colspan="5">الاسـنـان التـخــصـصـي</th>
                                 </tr>
                           </thead>
                 </table>
@@ -301,14 +308,14 @@
                       <thead>
 
                           <tr>
-                            <th style="font-size: 15px" >التخصص</th>
-                            <th style="font-size: 15px">المؤهل</th>
-                            <th style="font-size: 15px">الاسم </th>
-                            <th style="font-size: 15px">الرتبة</th>
-                            <th style="font-size: 15px">مكان الخدمة</th>
+                            <th style="font-size: 11px" >التخصص</th>
+                            <th style="font-size: 11px">المؤهل</th>
+                            <th style="font-size: 11px">الاسم </th>
+                            <th style="font-size: 11px">الرتبة</th>
+                            <th style="font-size: 11px">مكان الخدمة</th>
                           </tr>
                           <tr>
-                                <th style="text-align: center;font-size: 20px" colspan="5">الـــــــــــصــــــــــــــــدر</th>
+                                <th style="text-align: center;font-size: 13px" colspan="5">الـــــــــــصــــــــــــــــدر</th>
                             </tr>
                         </thead>
                         <div *ngIf="sadrSpinner"class="col-xs-3">
@@ -341,14 +348,14 @@
                             <thead>
     
                                 <tr>
-                                    <th style="font-size: 15px" >التخصص</th>
-                                    <th style="font-size: 15px">المؤهل</th>
-                                    <th style="font-size: 15px">الاسم </th>
-                                    <th style="font-size: 15px">الرتبة</th>
-                                    <th style="font-size: 15px">مكان الخدمة</th>
+                                    <th style="font-size: 11px" >التخصص</th>
+                                    <th style="font-size: 11px">المؤهل</th>
+                                    <th style="font-size: 11px">الاسم </th>
+                                    <th style="font-size: 11px">الرتبة</th>
+                                    <th style="font-size: 11px">مكان الخدمة</th>
                                 </tr>
                                 <tr>
-                                        <th style="text-align: center;font-size: 20px" colspan="5"> الاقــســام الــمــســاعــدة</th>
+                                        <th style="text-align: center;font-size: 13px" colspan="5"> الاقــســام الــمــســاعــدة</th>
                                     </tr>
                               </thead>
                     </table>
@@ -358,7 +365,13 @@
             
                 </div>
             
-            
+                <div class="col-xs-6" style="text-align: center">
+                    
+                    <h3>نوبتجية اطباء المجمع الطبي {{this.arabicYear}}/{{this.arabicMonth}}/{{this.arabicDay}} </h3>
+                    <h3>طبعت بواسطة {{LogedUsed.MyRank.Rank_Name}}  /  {{LogedUsed.name}} </h3>
+
+
+                    </div>
             
                
             </div>

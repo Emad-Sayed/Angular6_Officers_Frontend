@@ -26,6 +26,8 @@ export class BatnaAlbReportComponent implements OnInit {
   arabicYear:string;
   
 
+  ka2dMnob:Array<Shift>;
+
   LogedUsed:User;
 
   batnaShifts:Array<Shift>;
@@ -88,6 +90,9 @@ export class BatnaAlbReportComponent implements OnInit {
     this.arabicMonth= this.convertNumberToArabic(this.month)
     this.arabicYear= this.convertNumberToArabic(this.year)
     this.PrintReady=false;
+
+    this.getReportManob();
+
     this.getReportDataBatna();
     this.getReportDataEst2bal();
 
@@ -180,6 +185,14 @@ export class BatnaAlbReportComponent implements OnInit {
       data=>{
         this.aksamShifts=data;
         this.aksamSpinner=false;
+      },
+      error=>{}
+    )
+  }
+  getReportManob(){
+    this.reportService.getReportDetails("منوب",this.day,this.month,this.year).subscribe(
+      data=>{
+        this.ka2dMnob=data;
       },
       error=>{}
     )

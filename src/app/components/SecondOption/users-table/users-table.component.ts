@@ -14,6 +14,7 @@ export class UsersTableComponent implements OnInit {
   LoggedUser:User;
   textSearch:string;
   selectedUserID:number;
+  selectedUser:User;
   spinnerTable:boolean;
   users:Array<User>;
   updateFlag:boolean;
@@ -54,7 +55,12 @@ deleteUser(ele){
   this.selectedUserID=ele.currentTarget.id;
   var con=confirm("هل انت متأكد من حذف جميع بيانات المستخدم؟");
   if(con){
-    this.userService.deleteUserHistory(this.selectedUserID).subscribe(
+    for(let i=0;i<this.users.length;i++){
+      if(this.selectedUserID==this.users[i].ID){
+        this.selectedUser=this.users[i];
+      }
+    }
+    this.userService.deleteUserHistory(this.selectedUser).subscribe(
       data=>{
         this.getUsers();
       },

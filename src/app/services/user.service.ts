@@ -7,6 +7,7 @@ import { Specialization } from '../models/Specialization';
 import { Degree } from '../models/Degree';
 import { Hospital } from '../models/Hospital';
 import { ServerDomain, LocalDomain } from './Configration';
+import { Type } from '../models/Type';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,9 @@ export class UserService {
     let URL:string=this.mainURL+"/getusers";
     return this.http.get<Array<User>>(URL);
   }
-  deleteUserHistory(id:number){
-    let URL=this.mainURL+"/delete_userhistory?id="+id;
-    return this.http.delete(URL);
+  deleteUserHistory(user:User){
+    let URL=this.mainURL+"/Post_DeleteUserHistory";
+    return this.http.post(URL,user);
   }
   updateUser(user:User){
     let URL=this.mainURL+"/post_edituserinfo";
@@ -37,7 +38,11 @@ export class UserService {
     let URL=this.mainURL+"/getUsersByName?name="+name;
     return this.http.get<Array<User>>(URL);
   }
-  getRanks():Observable<Array<Rank>>{
+  getTypes():Observable<Array<Type>>{
+    let URL=this.mainURL+"/Get_Types";
+    return this.http.get<Array<Type>>(URL);
+  }
+    getRanks():Observable<Array<Rank>>{
     let URL=this.mainURL+"/GetRanks";
     return this.http.get<Array<Rank>>(URL);
   }
@@ -65,8 +70,8 @@ export class UserService {
     let URL=this.mainURL+"/EditSpetial";
     return this.http.post(URL,Spetial);  
   }
-  deleteSpetial(id:number){
-    let URL=this.mainURL+"/DeleteSpetial?id="+id;
-    return this.http.delete(URL);  
+  deleteSpetial(speial:Specialization){
+    let URL=this.mainURL+"/Post_DeleteSpetial";
+    return this.http.post(URL,speial);  
   }
 }
