@@ -17,12 +17,12 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     if(!this.loginCheck.isExist())
-    this.router.navigate([""])
+    this.router.navigate([''])
     else
     this.LoggedUser=this.loginCheck.getLoggedUser();
   }
   LoggOut(){
     window.localStorage.removeItem('user');
-    this.router.navigate([""]);
+    this.router.navigate(['']);
   }
 }
