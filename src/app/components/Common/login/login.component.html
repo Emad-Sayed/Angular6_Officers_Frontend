@@ -9,15 +9,13 @@
                     <div  *ngIf=(flagLogin) class="alert alert-danger text-center" role="alert">
                         {{loginErrorNumber}}   اسم المستخدم او كلمة المرور غير صحيحة
                           </div>
-                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-                    alt="">
+       
                 <form class="form-signin">
                 <input style="text-align:right;" [(ngModel)]="username" name="username" type="text" class="form-control" placeholder="اسم المستخدم" required autofocus>
                 <input style="text-align:right;"[(ngModel)]="password" name="password" type="password" class="form-control" placeholder="كلمة السر" required>
                 <button (click)="login()" class="btn btn-lg btn-primary btn-block" type="submit">
                     تسجيل الدخول</button>
 
-                <a href="#" class="pull-right need-help">مساعدة؟ </a><span class="clearfix"></span>
                 </form>
             </div>
         </div>

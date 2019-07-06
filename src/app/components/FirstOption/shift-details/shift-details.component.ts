@@ -9,6 +9,7 @@ import { Shift } from 'src/app/models/Shift';
   styleUrls: ['./shift-details.component.css']
 })
 export class ShiftDetailsComponent implements OnInit {
+  @Input() isAdmin:boolean;
   @Input() user_ID;
   @Input() cell_Number;
   @Input() shift_id
@@ -22,16 +23,18 @@ export class ShiftDetailsComponent implements OnInit {
   alertFlag: boolean=false;
   constructor(private taskService:TaskService) {
     this.shiftDeleted=new Shift();
-
    }
 
   ngOnInit() {
+    console.log(this.isAdmin)
     this.shiftDeleted.ID=this.shift_id;
     this.shiftDeleted.User_.ID=this.user_ID;
     this.shiftDeleted.DutyNum=this.cell_Number;
 
     this.shiftDeleted.Month=this.month;
     this.shiftDeleted.Year=this.year;
+
+
   }
   cancelShift(){
     var confirm=window.confirm("تأكيد عملية الحذف؟")

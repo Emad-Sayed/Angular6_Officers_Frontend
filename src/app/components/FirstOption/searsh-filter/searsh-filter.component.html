@@ -2,13 +2,13 @@
 
   <form>
     <div class="form-group">
-      <input [(ngModel)]="SearchName" style="width: 280px ;float: left;"  type="text" name="name"  class="form-control" id="name" placeholder="ادخل اسم الضابط">
+      <input [(ngModel)]="SearchName" (keyup.enter)="getUsers()" style="width: 280px ;float: left;"  type="text" name="name"  class="form-control" id="name" placeholder="ادخل اسم الضابط">
     </div>
   
 
   </form>
   <div   class="container  ">
-    <button (click)="getUsers()" type="button" class="btn btn-primary"><b> بــــــحــــــث </b></button>
+    <button (click)="getUsers()"  type="button" class="btn btn-primary"><b> بــــــحــــــث </b></button>
   </div>
 
   <div *ngIf="spinnerTable" class="container  col-lg-offset-6"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div>

@@ -7,7 +7,7 @@ import { ServerDomain, LocalDomain } from './Configration';
   providedIn: 'root'
 })
 export class LoginService {
-  mainURL:string =ServerDomain+"/api/user/"
+  mainURL:string =LocalDomain+"/api/user/"
   header:HttpHeaders;
   constructor(private http:HttpClient) { 
     this.header=new HttpHeaders();

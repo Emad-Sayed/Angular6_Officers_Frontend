@@ -8,7 +8,7 @@ import { ServerDomain, LocalDomain } from './Configration';
   providedIn: 'root'
 })
 export class ReportService {
-  mainURL:string =ServerDomain+"/api/report"
+  mainURL:string =LocalDomain+"/api/report"
   constructor(private http:HttpClient) { }
   getReportDetails(hospitalName:string,day:number,month:number,year:number):Observable<Array<Shift>>{
     let URL=this.mainURL+"/Get_Hospital_Report?hospitalName="+hospitalName+"&day="+day+"&month="+month+"&year="+year;

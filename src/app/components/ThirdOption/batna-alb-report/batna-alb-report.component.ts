@@ -10,11 +10,21 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./batna-alb-report.component.css']
 })
 export class BatnaAlbReportComponent implements OnInit {
+
+  englishNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+  arabicNumbers = ['١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩', '٠'];
+
+
   dateString:string;
   newdateObject:Date;
   day:number;
   month:number;
   year:number;
+
+  arabicDay:string;
+  arabicMonth:string;
+  arabicYear:string;
+  
 
   LogedUsed:User;
 
@@ -47,6 +57,7 @@ export class BatnaAlbReportComponent implements OnInit {
   PrintReady:boolean;
 
   constructor(private reportService:ReportService,private loginService:LoginService) {
+
     this.PrintReady=true;
     this.batnaSpinner=true;
     this.est2balSpinner=true;
@@ -59,6 +70,7 @@ export class BatnaAlbReportComponent implements OnInit {
     this.aksamSpinner=true;
     this.getCurrentDate();
     this.LogedUsed=this.loginService.getLoggedUser();
+    
 
    }
 
@@ -68,9 +80,13 @@ export class BatnaAlbReportComponent implements OnInit {
     this.day = new Date().getDate();
     this.month  = new Date().getMonth()+1;
     this.year  = new Date().getUTCFullYear();
+
   }
 
   getReports(){
+    this.arabicDay= this.convertNumberToArabic(this.day)
+    this.arabicMonth= this.convertNumberToArabic(this.month)
+    this.arabicYear= this.convertNumberToArabic(this.year)
     this.PrintReady=false;
     this.getReportDataBatna();
     this.getReportDataEst2bal();
@@ -167,6 +183,19 @@ export class BatnaAlbReportComponent implements OnInit {
       },
       error=>{}
     )
+  }
+  convertNumberToArabic(num){
+    let tempNum=num.toString();
+    let arabicNum="";
+    for(var j=0;j<tempNum.length;j++){
+      for(var i=0;i<this.englishNumbers.length;i++){
+        if(tempNum[j]==this.englishNumbers[i])
+        arabicNum +=""+ this.arabicNumbers[i]
+      }
+    }
+    
+    return arabicNum;
+
   }
 
 }

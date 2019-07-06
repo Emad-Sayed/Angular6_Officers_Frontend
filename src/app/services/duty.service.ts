@@ -9,7 +9,7 @@ import { ServerDomain, LocalDomain } from './Configration';
   providedIn: 'root'
 })
 export class DutyService {
-  mainURL:string =ServerDomain+"/api/duty/"
+  mainURL:string =LocalDomain+"/api/duty/"
   constructor(private http:HttpClient ) {}
   getDuties(id:number):Observable<Array<DutyType>>{
     let URL=this.mainURL+'/GetDuties?id='+id;

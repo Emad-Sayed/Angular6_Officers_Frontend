@@ -12,7 +12,7 @@ import { ServerDomain, LocalDomain } from './Configration';
   providedIn: 'root'
 })
 export class UserService {
-  mainURL:string =ServerDomain+"/api/user";
+  mainURL:string =LocalDomain+"/api/user";
   constructor(private http:HttpClient) { }
   getUser(id:number):Observable<User>{
     return this.http.get<User>(this.mainURL+"/getuser?id="+id);

@@ -4,6 +4,7 @@ import { Shift } from 'src/app/models/Shift';
 import { User } from 'src/app/models/User';
 import { DutyService } from 'src/app/services/duty.service';
 import { UserService } from 'src/app/services/user.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-tasks',
@@ -11,6 +12,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
+
+  LoggedUser:User;
+  isAdmin:boolean;
   updateFieldID:number;                    // Button user ID
   updateFieldnum:number;                   // Button Shift Number
   updateFieldShiftID:number;              // Button Shift ID
@@ -29,7 +33,12 @@ export class TasksComponent implements OnInit {
   searchField:string;
   searhFlag:boolean=false;
   formFlag:boolean=true;
-  constructor(private taksService:TaskService,private dutyService:DutyService,private userService:UserService) { 
+  constructor(private taksService:TaskService,private dutyService:DutyService,private userService:UserService,private loginService:LoginService) { 
+    this.LoggedUser=this.loginService.getLoggedUser();
+    this.isAdmin=false;
+    if(this.LoggedUser.MyType.Type_Name=='ادمن'){
+      this.isAdmin=true;
+    }
     this.month=6;
     this.year=2019;
     this.spinnerTable=true;
@@ -64,20 +73,20 @@ export class TasksComponent implements OnInit {
     this.updateFieldShiftID=ele.currentTarget.value;
     this.getUserData();
     this.firstShift=false;
-    if(ele.currentTarget.classList=='btn btn-light'){
+    if(ele.currentTarget.classList=='btn btn-light'&&this.LoggedUser.MyType.Type_Name=='ادمن'){
       this.shiftFormFrag=true;
       this.shiftDetails=false;
 
     }
-    else{
+    else if(ele.currentTarget.classList=='btn btn-success'){
       this.shiftFormFrag=false;
       this.shiftDetails=true;
       for(let i=0;i<this.shifts.length;i++){
         if(this.shifts[i][0].User_.ID==this.updateFieldID){
           for(let j=0;j<16;j++){
             if(this.shifts[i][j].DutyNum==this.updateFieldnum){
-              this.dutyTypeTemp=this.shifts[i][j].DutyType_.DutyType_Name
-              console.log(this.dutyTypeTemp)
+              this.dutyTypeTemp=this.shifts[i][j].DutyType_.DutyType_Name;
+              break;
             }
           }
         }

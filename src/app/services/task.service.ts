@@ -8,7 +8,7 @@ import { ServerDomain, LocalDomain } from './Configration';
   providedIn: 'root'
 })
 export class TaskService {
-  mainURL:string =ServerDomain+"/api/shift/"
+  mainURL:string =LocalDomain+"/api/shift/"
   URL:string;
   constructor(private http:HttpClient ) {}
   getShifts(Month:number,Year:number):Observable<Array<Array<Shift>>>{

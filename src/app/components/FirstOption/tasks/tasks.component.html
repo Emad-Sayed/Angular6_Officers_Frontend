@@ -40,7 +40,7 @@
 
   </div>
   <div  *ngIf="this.shiftDetails" class="container  col-lg-offset-4">
-    <app-shift-details (updateShiftParent)="updateShiftList()" (closeComponent)="closeDetailsShiftComponent()" [month]="month" [year]="year" [shift_id]="updateFieldShiftID" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user" [dutyTypeName]="dutyTypeTemp"></app-shift-details>
+    <app-shift-details (updateShiftParent)="updateShiftList()" (closeComponent)="closeDetailsShiftComponent()" [month]="month" [year]="year" [shift_id]="updateFieldShiftID" [user_ID]="updateFieldID" [cell_Number]="updateFieldnum" [user]="user" [dutyTypeName]="dutyTypeTemp" [isAdmin]="isAdmin"></app-shift-details>
   </div>
 
   <div  *ngIf="this.firstShift" class="container  col-lg-offset-4">
@@ -75,7 +75,7 @@
       <th scope="col">2</th>
       <th scope="col">1</th>
       <th scope="col">
-        <a (click)="plusRecord()" class="fa fa-plus" style="float:left; font-size:23px;color:black"></a>
+        <a *ngIf="isAdmin" (click)="plusRecord()" class="fa fa-plus" style="float:left; font-size:23px;color:black"></a>
         <a (click)="Search()"style="float:left;margin-left: 10px;font-size:20px;color:black" class="fa fa-search"></a>
         <div style="float: right;"><p style="font-weight: bold">  ضـــــــابـــــــــــــــــــط   </p></div>
        </th>
